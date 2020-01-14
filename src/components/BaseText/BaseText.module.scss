@@ -1,0 +1,43 @@
+@import 'shared/styles/index.scss';
+
+.base {
+  color: $black-text;
+}
+
+.text {
+  @extend .base;
+
+  font-family: 'PT Sans', sans-serif;
+  font-weight: 400;
+}
+
+.bold {
+  @extend .base;
+
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-weight: 700;
+}
+
+.size {
+  &--1 {
+    font-size: 0.625rem;
+  }
+  &--2 {
+    font-size: 0.75rem;
+  }
+  &--3 {
+    font-size: 0.875rem;
+  }
+  &--4 {
+    font-size: 1rem;
+  }
+  &--5 {
+    font-size: 1.25rem;
+  }
+  &--6 {
+    font-size: 2.5rem;
+  }
+  &--7 {
+    font-size: 3rem;
+  }
+}
