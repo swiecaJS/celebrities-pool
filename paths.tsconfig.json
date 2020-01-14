@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "__mocks__/*": ["__mocks__/*"],
+      "actions/*": ["actions/*"],
+      "api/*": ["api/*"],
+      "assets/*": ["assets/*"],
+      "components/*": ["components/*"],
+      "config/*": ["config/*"],
+      "constants/*": ["constants/*"],
+      "pages/*": ["pages/*"],
+      "queries/*": ["queries/*"],
+      "reducers/*": ["reducers/*"],
+      "services/*": ["services/*"],
+      "shared/*": ["shared/*"],
+      "store/*": ["store/*"],
+      "test/*": ["test/*"],
+      "types/*": ["types/*"],
+      "utils/*": ["utils/*"],
+      "validations/*": ["validations/*"]
+    }
+  }
+}
