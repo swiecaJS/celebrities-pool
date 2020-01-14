@@ -1,0 +1,11 @@
+@import-normalize;
+@import 'shared/styles/global.scss';
+
+.page {
+  background: black;
+  color: white;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
