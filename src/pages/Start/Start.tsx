@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import routes from 'constants/routes'
+
 import BaseText from "components/BaseText/BaseText";
 import BaseLink from "components/BaseLink/BaseLink";
 
@@ -20,7 +22,7 @@ const Start: React.FC<Props> = props => {
           💰
         </span>
       </BaseText>
-      <BaseLink to="/rules" type="primary">
+      <BaseLink to={routes.rules} type="primary">
         Start
       </BaseLink>
     </section>
