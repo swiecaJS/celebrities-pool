@@ -7,7 +7,7 @@ import {
   SECONDS_FOR_CHARADES,
   SECONDS_FOR_ROUND
 } from "./constants";
-import * as settingsActions from "store/gameSettings/actions";
+import * as settingsActions from "store/settings/actions";
 import routes from 'constants/routes'
 
 import BaseText from "components/BaseText/BaseText";

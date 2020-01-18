@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 import { SettingSliderConfig } from "./types";
 import { AppState } from "store/types";
-import { SettingsActionTypes } from "store/gameSettings/types";
+import { SettingsActionTypes } from "store/settings/types";
 
 import BaseSlider from "components/BaseSlider/BaseSlider";
 
