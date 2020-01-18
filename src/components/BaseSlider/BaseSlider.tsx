@@ -28,8 +28,8 @@ const BaseSlider: React.FC<Props> = ({
   defaultValue
 }) => {
   return (
-    <div className={wrapperClassName || ""}>
-      <BaseText tag="p" size={4}>
+    <div className={wrapperClassName}>
+      <BaseText tag="p" size={4} className={styles.label}>
         {label}
       </BaseText>
       <ReactSlider
