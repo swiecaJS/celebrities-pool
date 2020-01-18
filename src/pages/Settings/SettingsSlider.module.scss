@@ -1,0 +1,12 @@
+@import 'shared/styles/index.scss';
+
+$border-color: lighten($black, 70%);
+
+.wrapper {
+  padding: 15px 0;
+  border-top: 2px solid $border-color;
+  
+  &:last-of-type {
+    border-bottom: 2px solid $border-color;
+  }
+}
