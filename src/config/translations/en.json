@@ -1,0 +1,10 @@
+{
+  "settings": {
+    "header": "Game settings",
+    "charactersPerPerson": "Characters added by one player:",
+    "numberOfPlayers": "Number of players",
+    "secondsForRound": "How many seconds per round?",
+    "secondsForCharades": "How many seconds per charades round?",
+    "cta": "Start Game!"
+  }
+}
