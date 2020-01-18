@@ -12,6 +12,7 @@ import Start from "pages/Start/Start";
 import GameRules from "pages/GameRules/GameRules";
 import Settings from "pages/Settings/Settings";
 
+import 'config/translations/i18n'
 import "./root.module.scss";
 
 const propTypes = {};
