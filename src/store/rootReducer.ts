@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-import settingsReducer from "pages/Settings/reducer";
+import settingsReducer from "store/gameSettings/reducer";
 
 const rootReducer = combineReducers({
   settings: settingsReducer
