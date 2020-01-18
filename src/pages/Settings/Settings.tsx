@@ -1,28 +1,54 @@
-import React, {useCallback} from "react";
-import PropTypes from "prop-types";
-import { useDispatch, useSelector } from 'react-redux'
+import React from "react";
+import { useTranslation } from "react-i18next";
 
-import {AppState} from 'store/types'
-import * as settingsActions from './actions'
+import {
+  CHARACTERS_PER_PERSON,
+  NUMBER_OF_PLAYERS,
+  SECONDS_FOR_CHARADES,
+  SECONDS_FOR_ROUND
+} from "./constants";
+import * as settingsActions from "store/gameSettings/actions";
+import routes from 'constants/routes'
 
-const propTypes = {};
-const defaultProps = {};
+import BaseText from "components/BaseText/BaseText";
+import BaseLink from "components/BaseLink/BaseLink";
+import SettingSlider from "./SettingSlider";
 
-type Props = PropTypes.InferProps<typeof propTypes>;
+import styles from "./Settings.module.scss";
 
-const Settings: React.FC<Props> = () => {
-  const dispatch = useDispatch();
-  const incrementPlayers = useCallback((charactersPerPerson: number) => dispatch(settingsActions.setCharactersPerPerson(charactersPerPerson)), [dispatch])
-  const settings = useSelector((state:AppState) => state.settings)
+const Settings: React.FC = () => {
+  const { t } = useTranslation("settings");
 
-  return (<div>
-    <p>settings</p>
-    <p>charactersPerPerson {settings.charactersPerPerson}</p>
-    <button onClick={() => incrementPlayers(9)}>set charactersPerPerson to 10</button>
-  </div>);
+  return (
+    <div>
+      <BaseText tag="h1" size={6} isBold className={styles.header}>
+        {t("header")}
+      </BaseText>
+      <SettingSlider
+        config={NUMBER_OF_PLAYERS}
+        setValueAction={settingsActions.setNumberOfPlayers}
+        stateKey={"numberOfPlayers"}
+      />
+      <SettingSlider
+        config={CHARACTERS_PER_PERSON}
+        setValueAction={settingsActions.setCharactersPerPerson}
+        stateKey={"charactersPerPerson"}
+      />
+      <SettingSlider
+        config={SECONDS_FOR_ROUND}
+        setValueAction={settingsActions.setSecondsForRound}
+        stateKey={"secondsForRound"}
+      />
+      <SettingSlider
+        config={SECONDS_FOR_CHARADES}
+        setValueAction={settingsActions.setSecondsForCharades}
+        stateKey={"secondsForCharades"}
+      />
+      <BaseLink type="primary" to={routes.game} className={styles.cta}>
+        {t("cta")}
+      </BaseLink>
+    </div>
+  );
 };
-
-Settings.propTypes = propTypes;
-Settings.defaultProps = defaultProps;
 
 export default Settings;
