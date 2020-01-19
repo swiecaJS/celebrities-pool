@@ -6,5 +6,15 @@
     "secondsForRound": "How many seconds per round?",
     "secondsForCharades": "How many seconds per charades round?",
     "cta": "Start Game!"
+  },
+  "characters": {
+    "header": "Adding Characters Time!",
+    "submit": "Add Character",
+    "playerInfo": "Player {{currentPlayerId}} turn",
+    "start": "Start Game",
+    "enterCharacter": "Who you have in mind? 🤔",
+    "isReady": "Are you ready?",
+    "yes": "Yeah!",
+    "counter": "Characters entered: {{current}} / {{total}}"
   }
 }
