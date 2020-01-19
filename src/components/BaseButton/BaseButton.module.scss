@@ -1,0 +1,16 @@
+@import 'shared/styles/index.scss';
+
+.primary {
+  box-shadow: $shadow;
+  display: block;
+  margin: 0 auto;
+  width: 90%;
+  padding: 15px 0;
+  border-radius: 10px;
+  background: $black;
+  text-decoration: none;
+  
+  &Text {
+    color: $white;
+  }
+}
