@@ -7,7 +7,7 @@ import styles from "./BaseText.module.scss";
 const propTypes = {
   className: PropTypes.string,
   isBold: PropTypes.bool,
-  size: PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7])
+  size: PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9])
 };
 
 const defaultProps = {
