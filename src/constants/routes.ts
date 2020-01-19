@@ -2,7 +2,7 @@ export default {
   start: "/",
   rules: "/rules",
   settings: "/settings",
-  addCharacter: "/add-character",
+  characters: '/characters',
   charactersConfirmation: "/characters-confirmation",
-  game: "/game"
+  game: '/game'
 } as const;
