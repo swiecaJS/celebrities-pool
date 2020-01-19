@@ -16,7 +16,7 @@ type Props = PropTypes.InferProps<typeof propTypes>;
 const Start: React.FC<Props> = props => {
   return (
     <section className={styles.wrapper}>
-      <BaseText tag="h1" size={7} isBold>
+      <BaseText tag="h1" size={9} isBold>
         Sack of Celebrities
         <span role="img" aria-label="money sack">
           💰

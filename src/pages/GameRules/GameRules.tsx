@@ -14,7 +14,7 @@ type Props = PropTypes.InferProps<typeof propTypes>;
 const GameRules: React.FC<Props> = props => {
   return (
     <section>
-      <BaseText tag="h1" size={6}>
+      <BaseText tag="h1" size={8}>
         Do you know how to play?
       </BaseText>
       <BaseLink to={routes.settings} type="primary">

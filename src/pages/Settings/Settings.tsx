@@ -21,7 +21,7 @@ const Settings: React.FC = () => {
 
   return (
     <div>
-      <BaseText tag="h1" size={6} isBold className={styles.header}>
+      <BaseText tag="h1" size={8} isBold className={styles.header}>
         {t("header")}
       </BaseText>
       <SettingSlider
@@ -44,7 +44,7 @@ const Settings: React.FC = () => {
         setValueAction={settingsActions.setSecondsForCharades}
         stateKey={"secondsForCharades"}
       />
-      <BaseLink type="primary" to={routes.game} className={styles.cta}>
+      <BaseLink type="primary" to={routes.characters} className={styles.cta}>
         {t("cta")}
       </BaseLink>
     </div>
