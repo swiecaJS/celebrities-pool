@@ -12,6 +12,7 @@ import Start from "pages/Start/Start";
 import GameRules from "pages/GameRules/GameRules";
 import Settings from "pages/Settings/Settings";
 import Characters from 'pages/Characters/Characters'
+import Game from 'pages/Game/Game'
 
 import 'config/translations/i18n'
 import "./root.module.scss";
@@ -38,6 +39,9 @@ const root: React.FC<Props> = () => {
             </Route>
             <Route path={routes.characters}>
               <Characters />
+            </Route>
+            <Route path={routes.game}>
+              <Game />
             </Route>
           </Layout>
         </Switch>
