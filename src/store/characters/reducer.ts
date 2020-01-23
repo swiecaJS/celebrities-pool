@@ -7,8 +7,29 @@ export const initialState: CharactersState = {
   characters: []
 };
 
+export const initialStateForTests: CharactersState = {
+  characters: [
+    {
+      addedByPlayerId: 1,
+      description: "Batman"
+    },
+    {
+      addedByPlayerId: 2,
+      description: "Pikachu"
+    },
+    {
+      addedByPlayerId: 3,
+      description: "Robert Lewandowski"
+    },
+    {
+      addedByPlayerId: 4,
+      description: "Maria Carey"
+    },
+  ]
+};
+
 export default (
-  state = initialState,
+  state = initialStateForTests,
   incomingAction: AnyAction
 ): CharactersState => {
   const action = incomingAction as CharactersActionTypes;
