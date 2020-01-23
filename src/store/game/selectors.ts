@@ -9,3 +9,4 @@ export const getTimeLeft = (state: AppState) => getStateSubtree(state).timeLeft;
 
 export const useGetTimeLeft = () => useSelector(getTimeLeft);
 export const useGetTeamPoints = () => useSelector(getStateSubtree).points;
+export const useGetIsReady = () => useSelector(getStateSubtree).isReady;

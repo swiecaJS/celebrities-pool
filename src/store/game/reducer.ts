@@ -1,6 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { TeamKey, Round } from "./types";
-import * as actions from './actions'
+import * as actions from "./actions";
 export interface GameState {
   charactersLeftToGuess: string[];
   isReady: boolean;
@@ -8,7 +8,7 @@ export interface GameState {
   round: Round;
   points: Record<TeamKey, number>;
   timeLeft: number | null;
-  characterToGuess: string | null;
+  currentCharacter: string | null;
 }
 
 export const initialState: GameState = {
@@ -21,10 +21,8 @@ export const initialState: GameState = {
     B: 0
   },
   timeLeft: null,
-  characterToGuess: null
+  currentCharacter: null
 };
-
-
 
 const reducer = createReducer(initialState, builder =>
   builder
@@ -54,6 +52,10 @@ const reducer = createReducer(initialState, builder =>
     .addCase(actions.setCharactersLeftToGuess, (state, action) => ({
       ...state,
       charactersLeftToGuess: action.payload
+    }))
+    .addCase(actions.setCurrentCharacter, (state, { payload }) => ({
+      ...state,
+      currentCharacter: payload
     }))
 );
 

@@ -1,6 +1,5 @@
 import {createAction} from '@reduxjs/toolkit'
-import * as actionTypes from "./actionTypes";
-import { TeamKey, Round } from "./types";
+import { TeamKey, Round, PlayerGuess } from "./types";
 
 export const initialSetup = createAction('game/INITIAL_SETUP')
 
@@ -16,7 +15,7 @@ export const setRound = createAction<Round,'game/SET_ROUND'>(
   'game/SET_ROUND'
 );
 
-export const setCurrentCharacter = createAction<string, 'game/SET_CURRENT_CHARACTER'>('SET_CURRENT_CHARACTER')
+export const setCurrentCharacter = createAction<string, 'game/SET_CURRENT_CHARACTER'>('game/SET_CURRENT_CHARACTER')
 
 export const setTeamGuessing = createAction<
   TeamKey,
@@ -31,3 +30,6 @@ export const setCharactersLeftToGuess = createAction<
   string[],
   'game/SET_CHARACTERS_LEFT_TO_GUESS'
 >('game/SET_CHARACTERS_LEFT_TO_GUESS');
+
+
+export const playerGuessed = createAction<PlayerGuess, 'game/PLAYER_GUESSED'>('game/PLAYER_GUESSED')
