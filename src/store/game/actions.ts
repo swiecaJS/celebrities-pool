@@ -2,6 +2,8 @@ import {createAction} from '@reduxjs/toolkit'
 import { TeamKey, Round, PlayerGuess } from "./types";
 
 export const initialSetup = createAction('game/INITIAL_SETUP')
+export const startTurn = createAction('game/START_TURN')
+export const timeEnded = createAction('game/TIME_ENDED')
 
 export const addPoints = createAction<number, 'game/ADD_POINTS'>(
   'game/ADD_POINTS'
@@ -22,8 +24,8 @@ export const setTeamGuessing = createAction<
   'game/SET_TEAM_GUESSING'
 >('game/SET_TEAM_GUESSING');
 
-export const setTimeLeft = createAction<number,'game/SET_TIME_LEFT'>(
-'game/SET_TIME_LEFT'
+export const setTimeLeft = createAction<number,'timer/SET_TIME_LEFT'>(
+'timer/SET_TIME_LEFT'
 );
 
 export const setCharactersLeftToGuess = createAction<
