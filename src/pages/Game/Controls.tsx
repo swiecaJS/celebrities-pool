@@ -1,30 +1,47 @@
-import React from "react";
+import React, {useCallback} from "react";
 import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 
-import { playerGuessed } from "store/game/actions";
+import { playerGuessed, startTurn } from "store/game/actions";
 import { PlayerGuess } from "store/game/types";
+import { useGetIsReady} from 'store/game/selectors'
+
+
+import BaseButton from "components/BaseButton/BaseButton";
 
 import ControlButton from "./ControlButton";
 
 import styles from "./Game.module.scss";
 
 const Controls: React.FC = () => {
+  const {t} = useTranslation('game');
   const dispatch = useDispatch();
-  const onGuess = (guess: PlayerGuess) => dispatch(playerGuessed(guess));
+  const isPlayerReady = useGetIsReady();
+  const onGuess = useCallback((guess: PlayerGuess) => dispatch(playerGuessed(guess)), [dispatch])
+  const onStartTurn = useCallback(() => dispatch(startTurn()), [dispatch])
+
   return (
     <div className={styles.controls}>
-      <ControlButton
-        type="notCorrect"
-        onClick={() => {
-          onGuess({ isCorrect: false });
-        }}
-      />
-      <ControlButton
-        type="correct"
-        onClick={() => {
-          onGuess({ isCorrect: true });
-        }}
-      />
+      {!isPlayerReady ? (
+        <BaseButton type="button" onClick={onStartTurn}>
+          {t("startTurn")}
+        </BaseButton>
+      ) : (
+        <>
+          <ControlButton
+            type="notCorrect"
+            onClick={() => {
+              onGuess({ isCorrect: false });
+            }}
+          />
+          <ControlButton
+            type="correct"
+            onClick={() => {
+              onGuess({ isCorrect: true });
+            }}
+          />
+        </>
+      )}
     </div>
   );
 };
