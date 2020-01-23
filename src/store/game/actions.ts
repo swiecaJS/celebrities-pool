@@ -1,65 +1,31 @@
 import {createAction} from '@reduxjs/toolkit'
 import * as actionTypes from "./actionTypes";
-import {
-  AddPointsAction,
-  CharacterGuessedAction,
-  InitialSetupAction,
-  Round,
-  SetCharactersLeftToGuessAction,
-  SetIsReadyAction,
-  SetRoundAction,
-  SetTeamGuessingAction,
-  SetTimeLeftAction,
+import { TeamKey, Round } from "./types";
+
+export const initialSetup = createAction('game/INITIAL_SETUP')
+
+export const addPoints = createAction<number, typeof actionTypes.ADD_POINTS>(
+  actionTypes.ADD_POINTS
+);
+
+export const setIsReady = createAction<boolean, typeof actionTypes.SET_IS_READY>(
+  actionTypes.SET_IS_READY
+);
+
+export const setRound = createAction<Round, typeof actionTypes.SET_ROUND>(
+  actionTypes.SET_ROUND
+);
+
+export const setTeamGuessing = createAction<
   TeamKey,
-  SetCharacterToGuessAction,
-  TickAction
-} from "./types";
+  typeof actionTypes.SET_TEAM_GUESSING
+>(actionTypes.SET_TEAM_GUESSING);
 
-export const setRound = (payload: Round): SetRoundAction => ({
-  type: actionTypes.SET_ROUND,
-  payload
-});
+export const setTimeLeft = createAction<number, typeof actionTypes.SET_TIME_LEFT>(
+  actionTypes.SET_TIME_LEFT
+);
 
-export const setCharacterLeftToGuess = (
-  payload: string[]
-): SetCharactersLeftToGuessAction => ({
-  type: actionTypes.SET_CHARACTERS_LEFT_TO_GUESS,
-  payload
-});
-
-export const setIsReady = (payload: boolean): SetIsReadyAction => ({
-  type: actionTypes.SET_IS_READY,
-  payload
-});
-
-export const setTeamGuessing = (payload: TeamKey): SetTeamGuessingAction => ({
-  type: actionTypes.SET_TEAM_GUESSING,
-  payload
-});
-
-export const addPoints = (payload: number): AddPointsAction => ({
-  type: actionTypes.ADD_POINTS,
-  payload
-});
-
-export const initialSetup = (): InitialSetupAction => ({
-  type: actionTypes.INITIAL_SETUP
-});
-
-export const characterGuessed = (): CharacterGuessedAction => ({
-  type: actionTypes.CHARACTER_GUESSED
-});
-
-export const tick = (): TickAction => ({
-  type: actionTypes.TICK
-});
-
-export const setTimeLeft = (payload: number): SetTimeLeftAction => ({
-  type: actionTypes.SET_TIME_LEFT,
-  payload
-});
-
-export const setCharacterToGuess = (payload: string): SetCharacterToGuessAction => ({
-  type: actionTypes.SET_CHARACTER_TO_GUESS,
-  payload
-});
+export const setCharactersLeftToGuess = createAction<
+  string[],
+  typeof actionTypes.SET_CHARACTERS_LEFT_TO_GUESS
+>(actionTypes.SET_CHARACTERS_LEFT_TO_GUESS);

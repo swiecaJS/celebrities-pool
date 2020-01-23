@@ -1,6 +1,6 @@
-import { Reducer } from "redux";
-import { TeamKey, Round, GameActionTypes } from "./types";
-
+import { createReducer } from "@reduxjs/toolkit";
+import { TeamKey, Round } from "./types";
+import * as actions from './actions'
 export interface GameState {
   charactersLeftToGuess: string[];
   isReady: boolean;
@@ -8,7 +8,7 @@ export interface GameState {
   round: Round;
   points: Record<TeamKey, number>;
   timeLeft: number | null;
-  characterToGuess: string | null
+  characterToGuess: string | null;
 }
 
 export const initialState: GameState = {
@@ -24,54 +24,37 @@ export const initialState: GameState = {
   characterToGuess: null
 };
 
-const reducer: Reducer<GameState, GameActionTypes> = (
-  state = initialState,
-  action
-) => {
-  switch (action.type) {
-    case "game/ADD_POINTS":
-      return {
-        ...state,
-        points: {
-          ...state.points,
-          [state.teamGuessing]:
-            state.points[state.teamGuessing] + action.payload
-        }
-      };
-    case "game/SET_IS_READY":
-      return {
-        ...state,
-        isReady: action.payload
-      };
 
-    case "game/SET_ROUND":
-      return {
-        ...state,
-        round: action.payload
-      };
-    case "game/SET_TEAM_GUESSING":
-      return {
-        ...state,
-        teamGuessing: action.payload
-      };
-    case "game/SET_CHARACTERS_LEFT_TO_GUESS":
-      return {
-        ...state,
-        charactersLeftToGuess: action.payload
+
+const reducer = createReducer(initialState, builder =>
+  builder
+    .addCase(actions.addPoints, (state, action) => ({
+      ...state,
+      points: {
+        ...state.points,
+        [state.teamGuessing]: state.points[state.teamGuessing] + action.payload
       }
-    case "game/SET_TIME_LEFT":
-      return {
-        ...state,
-        timeLeft: action.payload
-      }
-    case "game/TICK":
-      return {
-        ...state,
-        timeLeft: state.timeLeft! - 1
-      }
-    default:
-      return state;
-  }
-};
+    }))
+    .addCase(actions.setIsReady, (state, action) => ({
+      ...state,
+      isReady: action.payload
+    }))
+    .addCase(actions.setRound, (state, action) => ({
+      ...state,
+      round: action.payload
+    }))
+    .addCase(actions.setTeamGuessing, (state, action) => ({
+      ...state,
+      teamGuessing: action.payload
+    }))
+    .addCase(actions.setTimeLeft, (state, action) => ({
+      ...state,
+      timeLeft: action.payload
+    }))
+    .addCase(actions.setCharactersLeftToGuess, (state, action) => ({
+      ...state,
+      charactersLeftToGuess: action.payload
+    }))
+);
 
 export default reducer;
