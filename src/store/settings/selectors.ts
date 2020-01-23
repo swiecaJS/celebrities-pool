@@ -4,7 +4,7 @@ import { AppState } from "../types";
 import { SettingsState } from "./types";
 import { initialState } from "./reducer";
 
-const getStateSubtree = (state: AppState): SettingsState =>
+export const getStateSubtree = (state: AppState): SettingsState =>
   state.settings || initialState;
 
 export const getTotalNumberOfCharacters = (state: AppState): number => {
