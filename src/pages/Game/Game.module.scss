@@ -35,9 +35,13 @@
   }
 }
 
-.card {
+.character {
   margin: 10px auto;
   width: 80%;
+
+  &Help {
+    margin-bottom: 10px;
+  }
   
   &Text {
     box-shadow: $shadow;
