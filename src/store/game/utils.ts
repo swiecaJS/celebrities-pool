@@ -1,3 +1,5 @@
+import { TeamKey } from "./types";
+
 export const shuffleArray = (array: any[]): any[] => {
   let counter = array.length;
 
@@ -16,4 +18,8 @@ export const shuffleArray = (array: any[]): any[] => {
   }
 
   return array;
+};
+
+export const getOtherTeamKey = (key: TeamKey): TeamKey => {
+  return key === "A" ? "B" : "A";
 };
