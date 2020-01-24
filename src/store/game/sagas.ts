@@ -1,5 +1,4 @@
 import * as saga from "redux-saga/effects";
-import { AnyAction } from "redux";
 
 import { getStateSubtree as settingsSelector } from "store/settings/selectors";
 import { SettingsState } from "store/settings/types";
@@ -70,7 +69,7 @@ export function* handleGuess(
   // check how many characters left 
 }
 
-export function* handleTurn() {
+export function* startTurn() {
     yield saga.put(gameActions.setIsReady(true));
     const timer = yield saga.fork(tickTock)
     yield saga.call(setNewCharacterToGuess, false)
@@ -101,6 +100,6 @@ export function* rootSaga() {
   yield saga.all([
     saga.takeEvery([gameActions.initialSetup.type], initRound),
     saga.takeEvery([gameActions.playerGuessed.type], handleGuess),
-    saga.takeEvery([gameActions.startTurn.type], handleTurn),
+    saga.takeEvery([gameActions.startTurn.type], startTurn),
   ]);
 }
