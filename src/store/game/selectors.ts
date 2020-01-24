@@ -16,3 +16,4 @@ export const useGetIsReady = () => useSelector(getStateSubtree).isReady;
 export const useGetRound = () => useSelector(getRound);
 export const useGetCurrentTeam = () => useSelector(getCurrentTeam);
 export const useGetCharacterToGuess = () => useSelector(getStateSubtree).currentCharacter;
+export const useGetHowManyLeftToGuess = () => useSelector(getAllLeftToGuess).length;
