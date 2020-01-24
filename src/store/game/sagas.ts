@@ -40,7 +40,6 @@ export function* nextRound() {
     case 2:
       yield saga.put(gameActions.setRound((currentRound + 1) as Round));
       yield saga.put(gameActions.setIsRoundOpening(true));
-      yield saga.call(prepareRound);
       break;
     case 3:
       // TODO - handle end game
@@ -62,54 +61,38 @@ export function* tickTock() {
 export function* handleGuess(
   action: ReturnType<typeof gameActions.playerGuessed>
 ) {
-  console.log('handle guess', action.payload)
   const { isCorrect, character } = action.payload;
 
   if (isCorrect) {
-    console.log('-----  adding point')
     yield saga.put(gameActions.addPoints(1));
   } else {
-    console.log('-----  adds to not guessed array')
     const notGuessed: string[] = yield saga.select(getNotGuessedInLastTurn);
     yield saga.put(gameActions.setCharactersNotGuessed([...notGuessed, character]));
-    // add to the notGuessed array, and merge it in next turn
   }
 
-  // remove from possible guesses
   const charactersInGame: string[] = yield saga.select(getAllLeftToGuess);
   const leftToGuess = charactersInGame.filter(c => c !== character);
 
-  console.log('----- left to guess', leftToGuess)
-
   if (leftToGuess.length === 0) {
-    console.log('----- calling next round')
     yield saga.put(gameActions.outOfCharacters())
     yield saga.call(nextRound);
     return;
   }
 
-  console.log('---- we still can guess')
-
-  // set new character
   const nextGuess = leftToGuess[0];
-  console.log('---- our new character to guess', nextGuess)
   yield saga.put(gameActions.setCurrentCharacter(nextGuess));
-  // remove this character from the list
-  console.log('---- setting left to guess to', leftToGuess.slice(1))
   yield saga.put(gameActions.setCharactersLeftToGuess(leftToGuess.slice(1)));
 }
 
 export function* startTurn() {
   yield saga.put(gameActions.setIsReady(true));
   const timer = yield saga.fork(tickTock);
-  // get first character to guess
+
   const leftToGuess: string[] = yield saga.select(getAllLeftToGuess);
   const nextGuess = leftToGuess[0];
   yield saga.put(gameActions.setCurrentCharacter(nextGuess));
-  // remove this character from the list
   yield saga.put(gameActions.setCharactersLeftToGuess(leftToGuess.slice(1)));
 
-  // TODO: handle all characters guessed
   yield saga.take([gameActions.timeEnded.type, gameActions.outOfCharacters.type]);
   yield saga.cancel(timer);
   yield saga.call(prepareNextTurn);
@@ -136,7 +119,6 @@ export function* prepareNextTurn() {
 }
 
 export function* rootSaga() {
-  console.log("saga", typeof gameActions.playerGuessed.type);
   yield saga.all([
     saga.takeEvery([gameActions.startRound.type], prepareRound),
     saga.takeEvery([gameActions.playerGuessed.type], handleGuess),
