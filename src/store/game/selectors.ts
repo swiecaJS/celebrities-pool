@@ -8,12 +8,16 @@ export const getStateSubtree = (state:AppState): GameState => state.game || init
 export const getTimeLeft = (state: AppState) => getStateSubtree(state).timeLeft;
 export const getCurrentTeam = (state: AppState) => getStateSubtree(state).teamGuessing
 export const getAllLeftToGuess = (state: AppState) => getStateSubtree(state).charactersLeftToGuess
+export const getNotGuessedInLastTurn = (state: AppState) => getStateSubtree(state).notGuessedInThisTurn
 export const getRound = (state: AppState) => getStateSubtree(state).round
+export const getIsRoundOpening = (state: AppState) => getStateSubtree(state).isRoundOpening
+export const getCurrentCharacterToGuess = (state: AppState) => getStateSubtree(state).currentCharacter
 
 export const useGetTimeLeft = () => useSelector(getTimeLeft);
 export const useGetTeamPoints = () => useSelector(getStateSubtree).points;
 export const useGetIsReady = () => useSelector(getStateSubtree).isReady;
 export const useGetRound = () => useSelector(getRound);
 export const useGetCurrentTeam = () => useSelector(getCurrentTeam);
-export const useGetCharacterToGuess = () => useSelector(getStateSubtree).currentCharacter;
+export const useGetCharacterToGuess = () => useSelector(getCurrentCharacterToGuess);
 export const useGetHowManyLeftToGuess = () => useSelector(getAllLeftToGuess).length;
+export const useGetIsRoundOpening = () => useSelector(getIsRoundOpening);
