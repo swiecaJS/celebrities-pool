@@ -5,6 +5,7 @@ export interface GameState {
   charactersLeftToGuess: string[];
   notGuessedInThisTurn: string[];
   isReady: boolean;
+  isRoundOpening: boolean;
   teamGuessing: TeamKey;
   round: Round;
   points: Record<TeamKey, number>;
@@ -16,6 +17,7 @@ export const initialState: GameState = {
   charactersLeftToGuess: [],
   notGuessedInThisTurn: [],
   isReady: false,
+  isRoundOpening: true,
   teamGuessing: "A",
   round: 1,
   points: {
@@ -59,9 +61,13 @@ const reducer = createReducer(initialState, builder =>
       ...state,
       currentCharacter: payload
     }))
-    .addCase(actions.characterNotGuessed, (state, { payload }) => ({
+    .addCase(actions.setCharactersNotGuessed, (state, { payload }) => ({
       ...state,
-      notGuessedInThisTurn: [...state.notGuessedInThisTurn, payload]
+      notGuessedInThisTurn: [ ...payload]
+    }))
+    .addCase(actions.setIsRoundOpening, (state, { payload }) => ({
+      ...state,
+      isRoundOpening: payload
     }))
 );
 
