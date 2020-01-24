@@ -3,6 +3,7 @@ import { TeamKey, Round } from "./types";
 import * as actions from "./actions";
 export interface GameState {
   charactersLeftToGuess: string[];
+  notGuessedInThisTurn: string[];
   isReady: boolean;
   teamGuessing: TeamKey;
   round: Round;
@@ -13,6 +14,7 @@ export interface GameState {
 
 export const initialState: GameState = {
   charactersLeftToGuess: [],
+  notGuessedInThisTurn: [],
   isReady: false,
   teamGuessing: "A",
   round: 1,
@@ -56,6 +58,10 @@ const reducer = createReducer(initialState, builder =>
     .addCase(actions.setCurrentCharacter, (state, { payload }) => ({
       ...state,
       currentCharacter: payload
+    }))
+    .addCase(actions.characterNotGuessed, (state, { payload }) => ({
+      ...state,
+      notGuessedInThisTurn: [...state.notGuessedInThisTurn, payload]
     }))
 );
 

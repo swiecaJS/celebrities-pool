@@ -33,5 +33,10 @@ export const setCharactersLeftToGuess = createAction<
   'game/SET_CHARACTERS_LEFT_TO_GUESS'
 >('game/SET_CHARACTERS_LEFT_TO_GUESS');
 
+export const characterNotGuessed = createAction<
+  string,
+  'game/CHARACTER_NOT_GUESSED'
+>('game/CHARACTER_NOT_GUESSED');
+
 
 export const playerGuessed = createAction<PlayerGuess, 'game/PLAYER_GUESSED'>('game/PLAYER_GUESSED')
