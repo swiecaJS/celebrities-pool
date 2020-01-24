@@ -20,12 +20,8 @@
     "prefix": "tsafc",
     "body": [
       "import React from 'react';",
-      "import PropTypes from 'prop-types';",
       "",
-      "const propTypes = {}",
-      "const defaultProps = {}",
-      "",
-      "type Props = PropTypes.InferProps<typeof propTypes>;",
+      "interface Props {};",
       "",
       "const ${TM_FILENAME_BASE}: React.FC<Props> = (props) => {",
       "",
@@ -33,11 +29,7 @@
       "  <div>",
       "   ${TM_FILENAME_BASE}",
       "  </div>",
-      ")",
-      "}",
-      "",
-      "${TM_FILENAME_BASE}.propTypes = propTypes;",
-      "${TM_FILENAME_BASE}.defaultProps = defaultProps;",
+      ")}",
       "",
       "export default ${TM_FILENAME_BASE};"
     ]
