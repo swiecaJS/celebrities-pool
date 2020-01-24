@@ -1,28 +1,24 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-
-import { initialSetup } from "store/game/actions";
+import {useGetIsRoundOpening} from 'store/game/selectors'
 
 import ScoreBoard from "./ScoreBoard";
 import Controls from "./Controls";
 import CharacterToGuess from "./CharacterToGuess";
 import Header from "./Header";
+import RoundOpening from './RoundOpening'
 
 import styles from "./Game.module.scss";
 
 const Start: React.FC = () => {
-  const dispatch = useDispatch();
-  const onInitialSetup = React.useCallback(() => {
-    dispatch(initialSetup());
-  }, [dispatch]);
-
-  React.useEffect(() => {
-    onInitialSetup();
-  }, [onInitialSetup]);
+  const isRoundOpening = useGetIsRoundOpening();
 
   return (
     <section className={styles.wrapper}>
-      <div>
+      {isRoundOpening ? (
+        <RoundOpening />
+      ) : (
+        <>
+        <div>
         <Header />
         <ScoreBoard />
         <div className={styles.progressBar}>
@@ -31,6 +27,9 @@ const Start: React.FC = () => {
       </div>
       <CharacterToGuess />
       <Controls />
+      </>
+      )}
+
     </section>
   );
 };
