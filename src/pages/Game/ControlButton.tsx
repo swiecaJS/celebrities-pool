@@ -1,11 +1,11 @@
 import React from 'react';
-import cn from "classnames";
+import cn from 'classnames';
 
-import styles from "./Game.module.scss";
+import styles from './Game.module.scss';
 
 interface Props {
-  type: 'correct' | 'notCorrect',
-  onClick: () => void
+  type: 'correct' | 'notCorrect';
+  onClick: () => void;
 }
 
 const config = {
@@ -13,34 +13,34 @@ const config = {
     aria: 'thumbs up',
     btnClassName: 'controlsButton--yes',
     spanClassName: 'controlsThumb--yes',
-    emoji: '👍'
+    emoji: '👍',
   },
   notCorrect: {
     aria: 'thumbs down',
     btnClassName: 'controlsButton--no',
     spanClassName: 'controlsThumb--no',
-    emoji: '👎'
+    emoji: '👎',
   },
-}
+};
 
-const ControlButton: React.FC<Props> = ({type, onClick}) => {
-const btnConfig = config[type];
-return (
+const ControlButton: React.FC<Props> = ({ type, onClick }) => {
+  const btnConfig = config[type];
+  return (
 
-  <button
-    className={cn(styles.controlsButton, styles[btnConfig.btnClassName])}
-    onClick={onClick}
-    data-cy={type}
-  >
-    <span
-      role="img"
-      aria-label={btnConfig.aria}
-      className={styles[btnConfig.spanClassName]}
+    <button
+      className={cn(styles.controlsButton, styles[btnConfig.btnClassName])}
+      onClick={onClick}
+      data-cy={type}
     >
-      {btnConfig.emoji}
-    </span>
-  </button>
-)
-}
+      <span
+        role="img"
+        aria-label={btnConfig.aria}
+        className={styles[btnConfig.spanClassName]}
+      >
+        {btnConfig.emoji}
+      </span>
+    </button>
+  );
+};
 
 export default ControlButton;

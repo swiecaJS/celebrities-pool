@@ -1,38 +1,36 @@
-import React from "react";
-import PropTypes from "prop-types";
-import cn from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import cn from 'classnames';
 
-import styles from "./BaseText.module.scss";
+import styles from './BaseText.module.scss';
 
 const propTypes = {
   className: PropTypes.string,
   isBold: PropTypes.bool,
-  size: PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9])
+  size: PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9]),
 };
 
 const defaultProps = {
   isBold: false,
-  size: 3
+  size: 3,
 };
 
 type InferredProps = PropTypes.InferProps<typeof propTypes>;
 
 interface Props extends InferredProps {
-  tag: "p" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span";
+  tag: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span';
   cypressSelector?: string;
 }
-const Text: React.FC<Props> = ({ tag, children, className, isBold, size, cypressSelector }) => {
-  return React.createElement(
-    tag,
-    {
-      className: cn(styles.text, className, styles[`size--${size}`], {
-        [styles.bold]: isBold
-      }),
-      'data-cy': cypressSelector
-    },
-    children
-  );
-};
+const Text: React.FC<Props> = ({ tag, children, className, isBold, size, cypressSelector }) => React.createElement(
+  tag,
+  {
+    className: cn(styles.text, className, styles[`size--${size}`], {
+      [styles.bold]: isBold,
+    }),
+    'data-cy': cypressSelector,
+  },
+  children,
+);
 
 Text.propTypes = propTypes;
 Text.defaultProps = defaultProps;

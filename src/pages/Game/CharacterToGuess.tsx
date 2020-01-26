@@ -1,13 +1,14 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-import {useGetCurrentTeam, useGetIsReady, useGetCharacterToGuess} from 'store/game/selectors'
+import { useGetCurrentTeam, useGetIsReady, useGetCharacterToGuess } from 'store/game/selectors';
 
-import BaseText from "components/BaseText/BaseText";
+import BaseText from 'components/BaseText/BaseText';
 
-import styles from "./Game.module.scss";
+import styles from './Game.module.scss';
+
 const CharacterToGuess: React.FC = () => {
-  const { t } = useTranslation("game");
+  const { t } = useTranslation('game');
 
   const isPlayerReady = useGetIsReady();
   const currentTeam = useGetCurrentTeam();

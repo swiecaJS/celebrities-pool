@@ -1,9 +1,9 @@
 export default {
-  start: "/",
-  rules: "/rules",
-  settings: "/settings",
+  start: '/',
+  rules: '/rules',
+  settings: '/settings',
   characters: '/characters',
-  charactersConfirmation: "/characters-confirmation",
+  charactersConfirmation: '/characters-confirmation',
   game: '/game',
-  results: '/results'
+  results: '/results',
 } as const;

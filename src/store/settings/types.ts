@@ -1,10 +1,10 @@
-import { Action } from "redux";
+import { Action } from 'redux';
 import {
   SET_NUMBER_OF_PLAYERS,
   SET_CHARACTERS_PER_PERSON,
   SET_SECONDS_FOR_ROUND,
-  SET_SECONDS_FOR_CHARADES
-} from "./actionTypes";
+  SET_SECONDS_FOR_CHARADES,
+} from './actionTypes';
 
 export interface SettingsState {
   numberOfPlayers: number;

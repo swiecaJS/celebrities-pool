@@ -4,6 +4,6 @@ import { rootSaga as gameSaga } from 'store/game/sagas';
 
 export default function* rootSaga() {
   yield all([
-    gameSaga()
+    gameSaga(),
   ]);
 }

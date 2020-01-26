@@ -1,41 +1,41 @@
-import * as actionTypes from "./actionTypes";
+import * as actionTypes from './actionTypes';
 import {
   SetCharactersPerPersonAction,
   SetNumberOfPlayersAction,
   SetSecondsForRoundAction,
-  SetSecondsForCharadesAction
-} from "./types";
+  SetSecondsForCharadesAction,
+} from './types';
 
 export const setCharactersPerPerson = (
-  charactersPerPerson: number
+  charactersPerPerson: number,
 ): SetCharactersPerPersonAction => ({
   type: actionTypes.SET_CHARACTERS_PER_PERSON,
   payload: {
-    charactersPerPerson
-  }
+    charactersPerPerson,
+  },
 });
 
 export const setNumberOfPlayers = (
-  numberOfPlayers: number
+  numberOfPlayers: number,
 ): SetNumberOfPlayersAction => ({
   type: actionTypes.SET_NUMBER_OF_PLAYERS,
   payload: {
-    numberOfPlayers
-  }
+    numberOfPlayers,
+  },
 });
 export const setSecondsForRound = (
-  secondsForRound: number
+  secondsForRound: number,
 ): SetSecondsForRoundAction => ({
   type: actionTypes.SET_SECONDS_FOR_ROUND,
   payload: {
-    secondsForRound
-  }
+    secondsForRound,
+  },
 });
 export const setSecondsForCharades = (
-  secondsForCharades: number
+  secondsForCharades: number,
 ): SetSecondsForCharadesAction => ({
   type: actionTypes.SET_SECONDS_FOR_CHARADES,
   payload: {
-    secondsForCharades
-  }
+    secondsForCharades,
+  },
 });

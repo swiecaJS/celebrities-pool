@@ -1,16 +1,16 @@
-import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { useGetIsRoundOpening, useGetHasGameEnded } from "store/game/selectors";
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useGetIsRoundOpening, useGetHasGameEnded } from 'store/game/selectors';
 
-import routes from "constants/routes";
+import routes from 'constants/routes';
 
-import ScoreBoard from "./ScoreBoard";
-import Controls from "./Controls";
-import CharacterToGuess from "./CharacterToGuess";
-import Header from "./Header";
-import RoundOpening from "./RoundOpening";
+import ScoreBoard from './ScoreBoard';
+import Controls from './Controls';
+import CharacterToGuess from './CharacterToGuess';
+import Header from './Header';
+import RoundOpening from './RoundOpening';
 
-import styles from "./Game.module.scss";
+import styles from './Game.module.scss';
 
 const Start: React.FC = () => {
   const isRoundOpening = useGetIsRoundOpening();
@@ -32,7 +32,7 @@ const Start: React.FC = () => {
             <Header />
             <ScoreBoard />
             <div className={styles.progressBar}>
-              <span className={styles.progressBarMeter}></span>
+              <span className={styles.progressBarMeter} />
             </div>
           </div>
           <CharacterToGuess />
