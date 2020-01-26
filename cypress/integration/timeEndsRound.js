@@ -3,8 +3,9 @@ import faker from "faker";
 
 const SLIDER_STEP = 1;
 const MIN_NUMBER_OF_CHARACTERS_PER_PLAYER = 1;
+const MIN_TIME_PER_ROUND_IN_SECONDS = 10;
 
-describe("Game happy path", () => {
+describe("Time for turn ends", () => {
   let charactersPerPerson;
   let numberOfPlayers;
 
@@ -54,34 +55,32 @@ describe("Game happy path", () => {
         expect(charactersPerPerson).to.eq(MIN_NUMBER_OF_CHARACTERS_PER_PLAYER);
       });
 
-    // TO DO - FIX
-    /*
     cy.get('[data-cy="seconds-for-round-slider"]')
       .then(($div) => {
         sliderValue = Number($div.text())
         console.log('sliderValue', sliderValue)
       })
       .trigger("mousedown")
-      .trigger("mousemove", 'right')
+      .trigger("mousemove", 'left')
+      .trigger("mousemove", 'left')
+      .trigger("mousemove", 'left')
+      .trigger("mousemove", 'left')
       .trigger("mouseup")
       .should(($div) => {
         const currentValue = Number($div.text())
-        expect(currentValue).to.eq(sliderValue + TIME_SLIDER_STEP)
+        expect(currentValue).to.eq(MIN_TIME_PER_ROUND_IN_SECONDS)
       })
-      */
 
     cy.get('[data-cy="settings-finished-btn"').click();
   });
 
   it("asks users to enter characters", () => {
-    const totalCharactersNumber = charactersPerPerson * numberOfPlayers
+    const totalCharactersNumber = charactersPerPerson * numberOfPlayers;
     cy.url().should("eq", `${Cypress.config().baseUrl}/characters`);
-    
+
     cy.get('[data-cy="total-characters-in-game"]')
       .invoke("val")
-      .then(value =>
-        expect(Number(value)).to.eq(totalCharactersNumber)
-      );
+      .then(value => expect(Number(value)).to.eq(totalCharactersNumber));
 
     let enteredCharacters = 0;
 
@@ -89,7 +88,7 @@ describe("Game happy path", () => {
       cy.get('[data-cy="characters-entered"]')
         .invoke("val")
         .then(value => expect(Number(value)).to.eq(enteredCharacters));
-  
+
       cy.get('[data-cy="player-ready-btn"]').click();
       cy.get('[data-cy="enter-character"]').type(faker.name.findName());
       cy.get('[data-cy="submit-character-btn"]')
@@ -100,17 +99,28 @@ describe("Game happy path", () => {
     });
 
     cy.get('[data-cy="characters-entering-finished"]').click();
-
   });
 
-  it('display info about first round',() => {
+  it("display info about first round", () => {
     cy.url().should("eq", `${Cypress.config().baseUrl}/game`);
+    cy.get('[data-cy="round-opening"]').should("be.visible");
+    cy.get('[data-cy="game-standings"]').should("not.be.visible");
+    cy.get('[data-cy="start-round-btn"]').click();
+  });
 
-  })
+  it("when time for turn ends, next turn button is visible", () => {
+    const correctBtn = 'button[data-cy="correct"]';
+    const notCorrectBtn = 'button[data-cy="notCorrect"]';
 
-  // more examples
-  //
-  // https://github.com/cypress-io/cypress-example-todomvc
-  // https://github.com/cypress-io/cypress-example-kitchensink
-  // https://on.cypress.io/writing-your-first-test
+    cy.url().should("eq", `${Cypress.config().baseUrl}/game`);
+    cy.get('[data-cy="round-opening"]').should("not.be.visible");
+    cy.get('[data-cy="game-standings"]').should("be.visible");
+    cy.get('[data-cy="start-turn-btn"]').click();
+
+    cy.get(notCorrectBtn).should('be.visible');
+    cy.get(correctBtn).should('be.visible');
+    cy.wait(MIN_TIME_PER_ROUND_IN_SECONDS * 1000);
+    cy.get('[data-cy="start-turn-btn"]').should('be.visible');
+
+  });
 });
