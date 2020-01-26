@@ -19,14 +19,16 @@ type InferredProps = PropTypes.InferProps<typeof propTypes>;
 
 interface Props extends InferredProps {
   tag: "p" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "span";
+  cypressSelector?: string;
 }
-const Text: React.FC<Props> = ({ tag, children, className, isBold, size }) => {
+const Text: React.FC<Props> = ({ tag, children, className, isBold, size, cypressSelector }) => {
   return React.createElement(
     tag,
     {
       className: cn(styles.text, className, styles[`size--${size}`], {
         [styles.bold]: isBold
-      })
+      }),
+      'data-cy': cypressSelector
     },
     children
   );
