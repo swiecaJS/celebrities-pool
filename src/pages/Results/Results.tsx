@@ -12,7 +12,7 @@ const Results: React.FC<Props> = (props) => {
   const winner = 'A';
 
 return (
-  <div>
+  <div data-cy="game-results">
       <BaseText tag="h1" size={8} isBold className={styles.header}>
         {t("header")}
       </BaseText>

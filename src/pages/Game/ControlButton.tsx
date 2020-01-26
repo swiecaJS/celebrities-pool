@@ -30,6 +30,7 @@ return (
   <button
     className={cn(styles.controlsButton, styles[btnConfig.btnClassName])}
     onClick={onClick}
+    data-cy={type}
   >
     <span
       role="img"
