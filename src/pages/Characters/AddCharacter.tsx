@@ -50,6 +50,7 @@ const AddCharacter: React.FC = () => {
           {t("enterCharacter")}
         </BaseText>
         <input
+          data-cy="enter-character"
           className={styles.input}
           type="text"
           name="character"
@@ -57,7 +58,7 @@ const AddCharacter: React.FC = () => {
           {...bindCharacterName}
         />
       </label>
-      <BaseButton type="submit">{t("submit")}</BaseButton>
+      <BaseButton type="submit" cypressSelector="submit-character-btn">{t("submit")}</BaseButton>
     </form>
   ) : (
     <div className={styles.notReady}>
@@ -67,7 +68,11 @@ const AddCharacter: React.FC = () => {
       <BaseText tag="p" size={6}>
         {t("isReady", { currentPlayerId })}
       </BaseText>
-      <BaseButton type="submit" onClick={() => setReady(true)}>
+      <BaseButton
+        type="submit"
+        onClick={() => setReady(true)}
+        cypressSelector="player-ready-btn"
+      >
         {t("yes")}
       </BaseButton>
     </div>

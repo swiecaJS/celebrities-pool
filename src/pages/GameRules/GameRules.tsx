@@ -17,7 +17,7 @@ const GameRules: React.FC<Props> = props => {
       <BaseText tag="h1" size={8}>
         Do you know how to play?
       </BaseText>
-      <BaseLink to={routes.settings} type="primary">
+      <BaseLink to={routes.settings} type="primary" cypressSelector="user-know-rules-btn">
         Yes
       </BaseLink>
     </section>
