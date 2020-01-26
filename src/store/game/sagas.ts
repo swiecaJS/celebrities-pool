@@ -71,14 +71,19 @@ export function* handleGuess(
     );
   }
 
+  const notGuessed: string[] = yield saga.select(getNotGuessedInLastTurn);
   const charactersInGame: string[] = yield saga.select(getAllLeftToGuess);
   const leftToGuess = charactersInGame.filter(c => c !== character);
 
+  if (leftToGuess.length === 0 && notGuessed.length === 0) {
+    yield saga.call(nextRound);
+  }
+
   if (leftToGuess.length === 0) {
     yield saga.put(gameActions.outOfCharacters());
-    yield saga.call(nextRound);
     return;
   }
+
 
   const nextGuess = leftToGuess[0];
   yield saga.put(gameActions.setCurrentCharacter(nextGuess));
@@ -109,11 +114,13 @@ export function* prepareNextTurn() {
   const leftToGuess: string[] = yield saga.select(getAllLeftToGuess);
   const notGuessed: string[] = yield saga.select(getNotGuessedInLastTurn);
   const lastCharacterDisplayed = yield saga.select(getCurrentCharacterToGuess);
-  const shuffled: string[] = shuffleArray([
-    ...leftToGuess,
-    ...notGuessed,
-    lastCharacterDisplayed
-  ]);
+  const arrayToShuffle = [...leftToGuess, ...notGuessed];
+
+  if (lastCharacterDisplayed && !notGuessed.includes(lastCharacterDisplayed)) {
+    arrayToShuffle.push(lastCharacterDisplayed);
+  }
+
+  const shuffled: string[] = shuffleArray(arrayToShuffle);
   yield saga.put(gameActions.setCharactersLeftToGuess(shuffled));
 
   yield saga.put(gameActions.setCharactersNotGuessed([]));
