@@ -29,7 +29,8 @@ export const initialStateForTests: CharactersState = {
 };
 
 export default (
-  state = initialStateForTests,
+  // state = initialStateForTests,
+  state = initialState,
   incomingAction: AnyAction
 ): CharactersState => {
   const action = incomingAction as CharactersActionTypes;
