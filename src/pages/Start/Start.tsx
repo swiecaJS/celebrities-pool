@@ -17,7 +17,7 @@ const Start: React.FC = () => {
           💰
         </span>
       </BaseText>
-      <BaseLink to={routes.rules} type="primary">
+      <BaseLink to={routes.rules} type="primary" cypressSelector="start-game-btn">
         Start
       </BaseLink>
     </section>

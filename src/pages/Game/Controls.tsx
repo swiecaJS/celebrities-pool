@@ -25,7 +25,7 @@ const Controls: React.FC = () => {
   return (
     <div className={styles.controls}>
       {!isPlayerReady || !character ? (
-        <BaseButton type="button" onClick={onStartTurn}>
+        <BaseButton type="button" onClick={onStartTurn} cypressSelector="start-turn-btn">
           {t("startTurn")}
         </BaseButton>
       ) : (

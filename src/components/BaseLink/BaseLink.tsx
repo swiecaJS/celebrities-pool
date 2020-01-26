@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import cn from 'classnames'
+import cn from "classnames";
 
 import BaseText from "components/BaseText/BaseText";
 
@@ -8,13 +8,24 @@ import styles from "./BaseLink.module.scss";
 
 interface Props {
   type: "primary";
-  to: string
-  className?: string
+  to: string;
+  className?: string;
+  cypressSelector?: string;
 }
 
-const BaseLink: React.FC<Props> = ({ children, type, to, className }) => {
+const BaseLink: React.FC<Props> = ({
+  children,
+  type,
+  to,
+  className,
+  cypressSelector
+}) => {
   return (
-    <Link to={to} className={cn(styles[type], className)}>
+    <Link
+      to={to}
+      className={cn(styles[type], className)}
+      data-cy={cypressSelector}
+    >
       <BaseText tag="span" size={5} className={styles[`${type}Text`]} isBold>
         {children}
       </BaseText>

@@ -28,7 +28,7 @@ const Start: React.FC = () => {
         <RoundOpening />
       ) : (
         <>
-          <div>
+          <div data-cy="game-standings">
             <Header />
             <ScoreBoard />
             <div className={styles.progressBar}>

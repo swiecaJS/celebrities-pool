@@ -15,6 +15,7 @@ interface Props  {
   step?: number | undefined;
   label: string;
   wrapperClassName?: string;
+  cypressSelector?: string
 }
 
 const BaseSlider: React.FC<Props> = ({
@@ -25,6 +26,7 @@ const BaseSlider: React.FC<Props> = ({
   min,
   max,
   step,
+  cypressSelector,
   defaultValue
 }) => {
   return (
@@ -40,7 +42,7 @@ const BaseSlider: React.FC<Props> = ({
         className={styles.slider}
         trackClassName={styles.track}
         thumbClassName={styles.thumb}
-        renderThumb={(props, state) => <div {...props}>{state.valueNow}</div>}
+        renderThumb={(props, state) => <div data-cy={cypressSelector} {...props}>{state.valueNow}</div>}
         onAfterChange={value => {
           const numberValue = value as number;
           handleChange(numberValue);

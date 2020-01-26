@@ -18,12 +18,14 @@ interface Props {
     | "secondsForRound"
     | "secondsForCharades";
   config: SettingSliderConfig;
+  cypressSelector: string;
 }
 
 const NumberOfPlayers: React.FC<Props> = ({
   setValueAction,
   stateKey,
-  config
+  config,
+  cypressSelector
 }) => {
   const { t } = useTranslation("settings");
   const dispatch = useDispatch();
@@ -43,6 +45,7 @@ const NumberOfPlayers: React.FC<Props> = ({
       value={sliderValue}
       label={t(stateKey)}
       handleChange={onHandleChange}
+      cypressSelector={cypressSelector}
     />
   );
 };
