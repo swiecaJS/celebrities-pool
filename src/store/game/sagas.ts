@@ -1,22 +1,22 @@
-import * as saga from "redux-saga/effects";
+import * as saga from 'redux-saga/effects';
 
-import { getStateSubtree as settingsSelector } from "store/settings/selectors";
-import { SettingsState } from "store/settings/types";
+import { getStateSubtree as settingsSelector } from 'store/settings/selectors';
+import { SettingsState } from 'store/settings/types';
 
-import { getCharacters } from "store/characters/selectors";
-import { Character } from "store/characters/types";
+import { getCharacters } from 'store/characters/selectors';
+import { Character } from 'store/characters/types';
 
-import * as gameActions from "./actions";
+import * as gameActions from './actions';
 import {
   getTimeLeft,
   getCurrentTeam,
   getAllLeftToGuess,
   getRound,
   getNotGuessedInLastTurn,
-  getCurrentCharacterToGuess
-} from "./selectors";
-import { shuffleArray, getOtherTeamKey } from "./utils";
-import { TeamKey, Round } from "./types";
+  getCurrentCharacterToGuess,
+} from './selectors';
+import { shuffleArray, getOtherTeamKey } from './utils';
+import { TeamKey, Round } from './types';
 
 export function* prepareRound() {
   const settings: SettingsState = yield saga.select(settingsSelector);
@@ -26,7 +26,7 @@ export function* prepareRound() {
   const mappedCharacters = characters.map(({ description }) => description);
 
   yield saga.put(
-    gameActions.setCharactersLeftToGuess(shuffleArray(mappedCharacters))
+    gameActions.setCharactersLeftToGuess(shuffleArray(mappedCharacters)),
   );
 
   yield saga.put(gameActions.setIsRoundOpening(false));
@@ -58,7 +58,7 @@ export function* tickTock() {
 }
 
 export function* handleGuess(
-  action: ReturnType<typeof gameActions.playerGuessed>
+  action: ReturnType<typeof gameActions.playerGuessed>,
 ) {
   const { isCorrect, character } = action.payload;
 
@@ -67,7 +67,7 @@ export function* handleGuess(
   } else {
     const notGuessed: string[] = yield saga.select(getNotGuessedInLastTurn);
     yield saga.put(
-      gameActions.setCharactersNotGuessed([...notGuessed, character])
+      gameActions.setCharactersNotGuessed([...notGuessed, character]),
     );
   }
 
@@ -101,7 +101,7 @@ export function* startTurn() {
 
   yield saga.take([
     gameActions.timeEnded.type,
-    gameActions.outOfCharacters.type
+    gameActions.outOfCharacters.type,
   ]);
   yield saga.cancel(timer);
   yield saga.call(prepareNextTurn);
@@ -128,7 +128,7 @@ export function* prepareNextTurn() {
 
   yield saga.put(gameActions.setTimeLeft(settings.secondsForRound));
   yield saga.put(
-    gameActions.setTeamGuessing(getOtherTeamKey(previousGuessingTeam))
+    gameActions.setTeamGuessing(getOtherTeamKey(previousGuessingTeam)),
   );
   yield saga.put(gameActions.setIsReady(false));
 }
@@ -137,6 +137,6 @@ export function* rootSaga() {
   yield saga.all([
     saga.takeEvery([gameActions.startRound.type], prepareRound),
     saga.takeEvery([gameActions.playerGuessed.type], handleGuess),
-    saga.takeEvery([gameActions.startTurn.type], startTurn)
+    saga.takeEvery([gameActions.startTurn.type], startTurn),
   ]);
 }

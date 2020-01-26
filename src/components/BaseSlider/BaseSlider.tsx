@@ -1,12 +1,12 @@
-import React from "react";
-import ReactSlider from "react-slider";
+import React from 'react';
+import ReactSlider from 'react-slider';
 
-import BaseText from "components/BaseText/BaseText";
+import BaseText from 'components/BaseText/BaseText';
 
-import styles from "./BaseSlider.module.scss";
+import styles from './BaseSlider.module.scss';
 
 
-interface Props  {
+interface Props {
   handleChange: (value: number) => void;
   value: number | undefined;
   defaultValue?: number | undefined;
@@ -15,7 +15,7 @@ interface Props  {
   step?: number | undefined;
   label: string;
   wrapperClassName?: string;
-  cypressSelector?: string
+  cypressSelector?: string;
 }
 
 const BaseSlider: React.FC<Props> = ({
@@ -27,29 +27,27 @@ const BaseSlider: React.FC<Props> = ({
   max,
   step,
   cypressSelector,
-  defaultValue
-}) => {
-  return (
-    <div className={wrapperClassName}>
-      <BaseText tag="p" size={4} className={styles.label}>
-        {label}
-      </BaseText>
-      <ReactSlider
-        min={min}
-        max={max}
-        step={step}
-        value={value}
-        className={styles.slider}
-        trackClassName={styles.track}
-        thumbClassName={styles.thumb}
-        renderThumb={(props, state) => <div data-cy={cypressSelector} {...props}>{state.valueNow}</div>}
-        onAfterChange={value => {
-          const numberValue = value as number;
-          handleChange(numberValue);
-        }}
-      />
-    </div>
-  );
-};
+  defaultValue,
+}) => (
+  <div className={wrapperClassName}>
+    <BaseText tag="p" size={4} className={styles.label}>
+      {label}
+    </BaseText>
+    <ReactSlider
+      min={min}
+      max={max}
+      step={step}
+      value={value}
+      className={styles.slider}
+      trackClassName={styles.track}
+      thumbClassName={styles.thumb}
+      renderThumb={(props, state) => <div data-cy={cypressSelector} {...props}>{state.valueNow}</div>}
+      onAfterChange={(value) => {
+        const numberValue = value as number;
+        handleChange(numberValue);
+      }}
+    />
+  </div>
+);
 
 export default BaseSlider;

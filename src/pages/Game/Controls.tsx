@@ -1,24 +1,24 @@
-import React, {useCallback} from "react";
-import { useDispatch } from "react-redux";
-import { useTranslation } from "react-i18next";
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
-import { playerGuessed, startTurn } from "store/game/actions";
-import { PlayerGuess } from "store/game/types";
-import { useGetIsReady, useGetCharacterToGuess} from 'store/game/selectors'
+import { playerGuessed, startTurn } from 'store/game/actions';
+import { PlayerGuess } from 'store/game/types';
+import { useGetIsReady, useGetCharacterToGuess } from 'store/game/selectors';
 
 
-import BaseButton from "components/BaseButton/BaseButton";
+import BaseButton from 'components/BaseButton/BaseButton';
 
-import ControlButton from "./ControlButton";
+import ControlButton from './ControlButton';
 
-import styles from "./Game.module.scss";
+import styles from './Game.module.scss';
 
 const Controls: React.FC = () => {
-  const {t} = useTranslation('game');
+  const { t } = useTranslation('game');
   const dispatch = useDispatch();
   const isPlayerReady = useGetIsReady();
-  const onGuess = useCallback((guess: PlayerGuess) => dispatch(playerGuessed(guess)), [dispatch])
-  const onStartTurn = useCallback(() => dispatch(startTurn()), [dispatch])
+  const onGuess = useCallback((guess: PlayerGuess) => dispatch(playerGuessed(guess)), [dispatch]);
+  const onStartTurn = useCallback(() => dispatch(startTurn()), [dispatch]);
   const character = useGetCharacterToGuess();
 
 
@@ -26,7 +26,7 @@ const Controls: React.FC = () => {
     <div className={styles.controls}>
       {!isPlayerReady || !character ? (
         <BaseButton type="button" onClick={onStartTurn} cypressSelector="start-turn-btn">
-          {t("startTurn")}
+          {t('startTurn')}
         </BaseButton>
       ) : (
         <>

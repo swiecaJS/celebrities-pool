@@ -1,14 +1,14 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-import { useGetCurrentTeam, useGetRound } from "store/game/selectors";
+import { useGetCurrentTeam, useGetRound } from 'store/game/selectors';
 
-import BaseText from "components/BaseText/BaseText";
+import BaseText from 'components/BaseText/BaseText';
 
-import styles from "./Game.module.scss";
+import styles from './Game.module.scss';
 
 const Header: React.FC = () => {
-  const { t } = useTranslation("game");
+  const { t } = useTranslation('game');
   const team = useGetCurrentTeam();
   const round = useGetRound();
 

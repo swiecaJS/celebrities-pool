@@ -1,8 +1,8 @@
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 
-import { AppState } from "./types";
-import { GameState } from "./game/reducer";
-import { SettingsState } from "./settings/types";
+import { AppState } from './types';
+import { GameState } from './game/reducer';
+import { SettingsState } from './settings/types';
 
 export const getIsRoundOpening = (state: AppState) => {
   const settings = state.settings as SettingsState;

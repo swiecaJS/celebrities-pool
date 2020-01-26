@@ -1,15 +1,15 @@
-import React, { useCallback } from "react";
-import { useDispatch } from "react-redux";
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 
-import { useGetRound } from "store/game/selectors";
-import { startRound } from "store/game/actions";
+import { useGetRound } from 'store/game/selectors';
+import { startRound } from 'store/game/actions';
 
-import BaseText from "components/BaseText/BaseText";
-import BaseButton from "components/BaseButton/BaseButton";
+import BaseText from 'components/BaseText/BaseText';
+import BaseButton from 'components/BaseButton/BaseButton';
 
 interface Props {}
 
-const RoundOpening: React.FC<Props> = props => {
+const RoundOpening: React.FC<Props> = (props) => {
   const dispatch = useDispatch();
   const onRoundStart = useCallback(() => {
     dispatch(startRound());

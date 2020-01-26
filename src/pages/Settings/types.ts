@@ -1,5 +1,5 @@
 export interface SettingSliderConfig {
-  MIN: number,
-  MAX: number,
-  STEP: number
+  MIN: number;
+  MAX: number;
+  STEP: number;
 }

@@ -1,22 +1,22 @@
-import React, { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useTranslation } from "react-i18next";
+import React, { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
-import { SettingSliderConfig } from "./types";
-import { AppState } from "store/types";
-import { SettingsActionTypes } from "store/settings/types";
+import { AppState } from 'store/types';
+import { SettingsActionTypes } from 'store/settings/types';
 
-import BaseSlider from "components/BaseSlider/BaseSlider";
+import BaseSlider from 'components/BaseSlider/BaseSlider';
+import { SettingSliderConfig } from './types';
 
-import styles from "./SettingsSlider.module.scss";
+import styles from './SettingsSlider.module.scss';
 
 interface Props {
   setValueAction: (value: any) => SettingsActionTypes;
   stateKey:
-    | "numberOfPlayers"
-    | "charactersPerPerson"
-    | "secondsForRound"
-    | "secondsForCharades";
+  | 'numberOfPlayers'
+  | 'charactersPerPerson'
+  | 'secondsForRound'
+  | 'secondsForCharades';
   config: SettingSliderConfig;
   cypressSelector: string;
 }
@@ -25,16 +25,16 @@ const NumberOfPlayers: React.FC<Props> = ({
   setValueAction,
   stateKey,
   config,
-  cypressSelector
+  cypressSelector,
 }) => {
-  const { t } = useTranslation("settings");
+  const { t } = useTranslation('settings');
   const dispatch = useDispatch();
   const onHandleChange = useCallback(
     (newValue: number) => dispatch(setValueAction(newValue)),
-    [dispatch, setValueAction]
+    [dispatch, setValueAction],
   );
   const sliderValue = useSelector(
-    (state: AppState) => state.settings[stateKey]
+    (state: AppState) => state.settings[stateKey],
   );
   return (
     <BaseSlider
