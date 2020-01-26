@@ -33,6 +33,8 @@ const CharacterPage: React.FC = () => {
           current: characters.length
         })}
       </BaseText>
+      <input type="hidden" data-cy="total-characters-in-game" value={totalNumberOfCharacters}/>
+      <input type="hidden" data-cy="characters-entered" value={characters.length}/>
 
       </div>
       <div className={styles.content}>

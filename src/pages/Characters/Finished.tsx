@@ -11,7 +11,7 @@ const Finished: React.FC = () => {
   return (
     <>
       <BaseText tag="h3">{t("finished")}</BaseText>
-      <BaseLink to={routes.game} type="primary">
+      <BaseLink to={routes.game} type="primary" cypressSelector="characters-entering-finished">
         {t("start")}
       </BaseLink>
     </>
