@@ -16,5 +16,11 @@
     "isReady": "Are you ready?",
     "yes": "Yeah!",
     "counter": "Characters entered: {{current}} / {{total}}"
+  },
+  "results": {
+    "header": "Game Over",
+    "result": "Team {{winner}} won!",
+    "details": "Final standings:",
+    "points": "Team {{team}} : {{points}} points"
   }
 }

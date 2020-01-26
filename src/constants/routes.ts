@@ -4,5 +4,6 @@ export default {
   settings: "/settings",
   characters: '/characters',
   charactersConfirmation: "/characters-confirmation",
-  game: '/game'
+  game: '/game',
+  results: '/results'
 } as const;
