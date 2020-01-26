@@ -42,8 +42,7 @@ export function* nextRound() {
       yield saga.put(gameActions.setIsRoundOpening(true));
       break;
     case 3:
-      // TODO - handle end game
-      return null;
+      yield saga.put(gameActions.setGameEnded(true));
   }
 }
 
@@ -67,14 +66,16 @@ export function* handleGuess(
     yield saga.put(gameActions.addPoints(1));
   } else {
     const notGuessed: string[] = yield saga.select(getNotGuessedInLastTurn);
-    yield saga.put(gameActions.setCharactersNotGuessed([...notGuessed, character]));
+    yield saga.put(
+      gameActions.setCharactersNotGuessed([...notGuessed, character])
+    );
   }
 
   const charactersInGame: string[] = yield saga.select(getAllLeftToGuess);
   const leftToGuess = charactersInGame.filter(c => c !== character);
 
   if (leftToGuess.length === 0) {
-    yield saga.put(gameActions.outOfCharacters())
+    yield saga.put(gameActions.outOfCharacters());
     yield saga.call(nextRound);
     return;
   }
@@ -93,7 +94,10 @@ export function* startTurn() {
   yield saga.put(gameActions.setCurrentCharacter(nextGuess));
   yield saga.put(gameActions.setCharactersLeftToGuess(leftToGuess.slice(1)));
 
-  yield saga.take([gameActions.timeEnded.type, gameActions.outOfCharacters.type]);
+  yield saga.take([
+    gameActions.timeEnded.type,
+    gameActions.outOfCharacters.type
+  ]);
   yield saga.cancel(timer);
   yield saga.call(prepareNextTurn);
 }
@@ -104,8 +108,12 @@ export function* prepareNextTurn() {
 
   const leftToGuess: string[] = yield saga.select(getAllLeftToGuess);
   const notGuessed: string[] = yield saga.select(getNotGuessedInLastTurn);
-  const lastCharacterDisplayed = yield saga.select(getCurrentCharacterToGuess)
-  const shuffled: string[] = shuffleArray([...leftToGuess, ...notGuessed, lastCharacterDisplayed]);
+  const lastCharacterDisplayed = yield saga.select(getCurrentCharacterToGuess);
+  const shuffled: string[] = shuffleArray([
+    ...leftToGuess,
+    ...notGuessed,
+    lastCharacterDisplayed
+  ]);
   yield saga.put(gameActions.setCharactersLeftToGuess(shuffled));
 
   yield saga.put(gameActions.setCharactersNotGuessed([]));

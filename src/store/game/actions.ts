@@ -5,6 +5,7 @@ export const startRound = createAction('game/START_ROUND')
 export const startTurn = createAction('game/START_TURN')
 export const timeEnded = createAction('game/TIME_ENDED')
 export const outOfCharacters = createAction('game/OUT_OF_CHARACTERS')
+export const setGameEnded = createAction<boolean, 'game/SET_GAME_ENDED'>('game/SET_GAME_ENDED')
 
 export const addPoints = createAction<number, 'game/ADD_POINTS'>(
   'game/ADD_POINTS'
