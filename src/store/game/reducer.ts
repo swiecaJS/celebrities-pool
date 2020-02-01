@@ -39,6 +39,7 @@ const reducer = createReducer(initialState, builder => builder
       [state.teamGuessing]: state.points[state.teamGuessing] + action.payload,
     },
   }))
+  .addCase(actions.resetGame, () => ({ ...initialState }))
   .addCase(actions.setIsReady, (state, action) => ({
     ...state,
     isReady: action.payload,
