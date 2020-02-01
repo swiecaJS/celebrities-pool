@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
 
 import { AppState } from '../types';
-import { CharactersState, Character } from './types';
-import { initialState } from './reducer';
+import { Character } from './types';
+import { initialState, CharactersState } from './reducer';
 
-const getStateSubtree = (state: AppState): CharactersState => state.characters || initialState;
+const getCharactersState = (state: AppState): CharactersState => state.characters || initialState;
 
-export const getCharacters = (state: AppState): Character[] => getStateSubtree(state).characters;
+export const getCharacters = (state: AppState): Character[] => getCharactersState(state).characters;
 
 export const useGetCharacters = () => useSelector(getCharacters);

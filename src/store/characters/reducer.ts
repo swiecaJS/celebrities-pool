@@ -1,7 +1,12 @@
-import { AnyAction } from 'redux';
+import { createReducer } from '@reduxjs/toolkit';
 
-import { CharactersState, CharactersActionTypes } from './types';
-import { ADD_CHARACTER } from './actionTypes';
+import { resetGame } from 'store/game/actions';
+import { Character } from './types';
+import { addCharacter } from './actions';
+
+export interface CharactersState {
+  characters: Character[];
+}
 
 export const initialState: CharactersState = {
   characters: [],
@@ -28,20 +33,29 @@ export const initialStateForTests: CharactersState = {
   ],
 };
 
-export default (
-  // state = initialStateForTests,
-  state = initialState,
-  incomingAction: AnyAction,
-): CharactersState => {
-  const action = incomingAction as CharactersActionTypes;
+const reducer = createReducer(initialState, builder => builder
+  .addCase(addCharacter, (state, { payload }) => ({
+    ...state,
+    characters: [...state.characters, payload],
+  }))
+  .addCase(resetGame, () => ({ ...initialState })));
 
-  switch (action.type) {
-    case ADD_CHARACTER:
-      return {
-        ...state,
-        characters: [...state.characters, action.payload.character],
-      };
-    default:
-      return state;
-  }
-};
+export default reducer;
+
+// export default (
+//   // state = initialStateForTests,
+//   state = initialState,
+//   incomingAction: AnyAction,
+// ): CharactersState => {
+//   const action = incomingAction as CharactersActionTypes;
+
+//   switch (action.type) {
+//     case ADD_CHARACTER:
+//       return {
+//         ...state,
+//         characters: [...state.characters, action.payload.character],
+//       };
+//     default:
+//       return state;
+//   }
+// };

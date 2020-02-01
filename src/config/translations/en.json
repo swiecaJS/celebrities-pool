@@ -19,8 +19,10 @@
   },
   "results": {
     "header": "Game Over",
-    "result": "Team {{winner}} won!",
+    "result": "Team {{winner}} won! 👏",
     "details": "Final standings:",
-    "points": "Team {{team}} : {{points}} points"
+    "points": "Team {{team}} : {{points}} points",
+    "draw": "We have a tie! 🙈",
+    "playAgain": "Play Again!"
   }
 }

@@ -148,11 +148,15 @@ describe('All guesses always correct', () => {
     });
   });
 
-  it('shows game over screen', () => {
+  it('shows game over screen, team A wins', () => {
     cy.url().should('eq', `${Cypress.config().baseUrl}/results`);
     cy.get('[data-cy="game-results"]').should('be.visible');
     cy.get('[data-cy="game-standings"]').should('not.be.visible');
     cy.get('[data-cy="round-opening"]').should('not.be.visible');
+    cy.get('[data-cy="reset-game-btn"]').should('be.visible');
+    cy.get('[data-cy="game-winner"]')
+      .invoke('val')
+      .then(value => expect(value).to.eq('A'));
   });
 
   // more examples
