@@ -1,34 +1,42 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
+import { resetGame } from 'store/game/actions';
+import routes from 'constants/routes';
+
 import BaseText from 'components/BaseText/BaseText';
+import BaseButton from 'components/BaseButton/BaseButton';
+
+import Winner from './Winner';
+import TeamStandings from './TeamStandings';
 
 import styles from './Results.module.scss';
 
-interface Props {}
 
-const Results: React.FC<Props> = (props) => {
+const Results: React.FC = () => {
   const { t } = useTranslation('results');
-  const winner = 'A';
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const dispatchResetGame = useCallback(() => dispatch(resetGame()),
+    [dispatch]);
+
+  const onResetGame = () => {
+    dispatchResetGame();
+    history.push(routes.settings);
+  };
 
   return (
     <div data-cy="game-results">
       <BaseText tag="h1" size={8} isBold className={styles.header}>
         {t('header')}
       </BaseText>
-      <BaseText tag="p" size={7} className={styles.header} cypressSelector="winner">
-        {t('result', { winner })}
-      </BaseText>
-      <BaseText tag="p" size={5} className={styles.header}>
-        {t('details')}
-      </BaseText>
-      <BaseText tag="p" size={5} className={styles.header}>
-        {t('points', { team: 'A', points: 10 })}
-      </BaseText>
-      <BaseText tag="p" size={5} className={styles.header}>
-        {t('points', { team: 'B', points: 9 })}
-      </BaseText>
-
+      <Winner />
+      <TeamStandings />
+      <BaseButton type="button" onClick={onResetGame} cypressSelector="reset-game-btn">
+        {t('playAgain')}
+      </BaseButton>
 
     </div>
   );
