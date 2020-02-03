@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import routes from 'constants/routes';
-import store from 'store';
+import { store, persistor } from 'store';
 
 import Layout from 'components/Layout/Layout';
 
@@ -25,30 +26,32 @@ type Props = PropTypes.InferProps<typeof propTypes>;
 
 const root: React.FC<Props> = () => (
   <Provider store={store}>
-    <Router>
-      <Switch>
-        <Layout>
-          <Route path={routes.start} exact>
-            <Start />
-          </Route>
-          <Route path={routes.rules}>
-            <GameRules />
-          </Route>
-          <Route path={routes.settings}>
-            <Settings />
-          </Route>
-          <Route path={routes.characters}>
-            <Characters />
-          </Route>
-          <Route path={routes.game}>
-            <Game />
-          </Route>
-          <Route path={routes.results}>
-            <Results />
-          </Route>
-        </Layout>
-      </Switch>
-    </Router>
+    <PersistGate persistor={persistor}>
+      <Router>
+        <Switch>
+          <Layout>
+            <Route path={routes.start} exact>
+              <Start />
+            </Route>
+            <Route path={routes.rules}>
+              <GameRules />
+            </Route>
+            <Route path={routes.settings}>
+              <Settings />
+            </Route>
+            <Route path={routes.characters}>
+              <Characters />
+            </Route>
+            <Route path={routes.game}>
+              <Game />
+            </Route>
+            <Route path={routes.results}>
+              <Results />
+            </Route>
+          </Layout>
+        </Switch>
+      </Router>
+    </PersistGate>
   </Provider>
 );
 
