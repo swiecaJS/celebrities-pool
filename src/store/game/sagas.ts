@@ -1,4 +1,5 @@
 import * as saga from 'redux-saga/effects';
+import { REHYDRATE as rehydrateAction } from 'redux-persist';
 
 import { getStateSubtree as settingsSelector } from 'store/settings/selectors';
 import { SettingsState } from 'store/settings/types';
@@ -138,5 +139,6 @@ export function* rootSaga() {
     saga.takeEvery([gameActions.startRound.type], prepareRound),
     saga.takeEvery([gameActions.playerGuessed.type], handleGuess),
     saga.takeEvery([gameActions.startTurn.type], startTurn),
+    saga.takeEvery(rehydrateAction, prepareNextTurn),
   ]);
 }

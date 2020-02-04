@@ -18,7 +18,7 @@ const CharacterPage: React.FC = () => {
   const characters = useGetCharacters();
 
   useEffect(() => {
-    if (characters.length === totalNumberOfCharacters) setAddingFinished(true);
+    if (characters.length >= totalNumberOfCharacters) setAddingFinished(true);
   }, [characters.length, totalNumberOfCharacters]);
 
   return (
