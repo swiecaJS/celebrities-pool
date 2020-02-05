@@ -43,6 +43,7 @@ module.exports = {
     'object-curly-newline': 'off',
     'operator-linebreak': 'off',
     'no-unused-vars': 'off',
+    'react/prop-types': 'off',
     'react/button-has-type': 'error',
     'react/destructuring-assignment': 'off',
     'react/jsx-one-expression-per-line': 'off',

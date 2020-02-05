@@ -1,7 +1,7 @@
+@import "shared/styles/index.scss";
+
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  @extend .globalWrapper;
 }
 
 .header {

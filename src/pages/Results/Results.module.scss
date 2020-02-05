@@ -1,4 +1,8 @@
-@import 'shared/styles/index.scss';
+@import "shared/styles/index.scss";
+
+.wrapper {
+  @extend .globalWrapper;
+}
 
 .result {
   padding: 20px;

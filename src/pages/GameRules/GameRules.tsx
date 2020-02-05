@@ -1,18 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import routes from 'constants/routes';
 
 import BaseText from 'components/BaseText/BaseText';
 import BaseLink from 'components/BaseLink/BaseLink';
 
-const propTypes = {};
-const defaultProps = {};
+import styles from './GameRules.module.scss';
 
-type Props = PropTypes.InferProps<typeof propTypes>;
-
-const GameRules: React.FC<Props> = props => (
-  <section>
+const GameRules: React.FC = () => (
+  <section className={styles.wrapper}>
     <BaseText tag="h1" size={8}>
         Do you know how to play?
     </BaseText>
@@ -21,8 +17,5 @@ const GameRules: React.FC<Props> = props => (
     </BaseLink>
   </section>
 );
-
-GameRules.propTypes = propTypes;
-GameRules.defaultProps = defaultProps;
 
 export default GameRules;
