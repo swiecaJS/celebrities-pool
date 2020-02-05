@@ -12,6 +12,8 @@ export const getTotalNumberOfCharacters = (state: AppState): number => {
   return settings.charactersPerPerson * settings.numberOfPlayers;
 };
 
+export const getSecondsForRound = (state: AppState) => getStateSubtree(state).secondsForRound;
+
 export const useGetGameSettings = () => useSelector(getStateSubtree);
 
 export const useGetTotalNumberOfCharacters = () => useSelector(getTotalNumberOfCharacters);
