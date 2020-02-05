@@ -20,34 +20,37 @@ const Settings: React.FC = () => {
   const { t } = useTranslation('settings');
 
   return (
-    <div>
+    <div className={styles.wrapper}>
       <BaseText tag="h1" size={8} isBold className={styles.header}>
         {t('header')}
       </BaseText>
-      <SettingSlider
-        config={NUMBER_OF_PLAYERS}
-        setValueAction={settingsActions.setNumberOfPlayers}
-        stateKey="numberOfPlayers"
-        cypressSelector="number-of-players-slider"
-      />
-      <SettingSlider
-        config={CHARACTERS_PER_PERSON}
-        setValueAction={settingsActions.setCharactersPerPerson}
-        stateKey="charactersPerPerson"
-        cypressSelector="character-per-person-slider"
-      />
-      <SettingSlider
-        config={SECONDS_FOR_ROUND}
-        setValueAction={settingsActions.setSecondsForRound}
-        stateKey="secondsForRound"
-        cypressSelector="seconds-for-round-slider"
-      />
-      <SettingSlider
-        config={SECONDS_FOR_CHARADES}
-        setValueAction={settingsActions.setSecondsForCharades}
-        stateKey="secondsForCharades"
-        cypressSelector="seconds-for-charades-slider"
-      />
+      <div>
+        <SettingSlider
+          config={NUMBER_OF_PLAYERS}
+          setValueAction={settingsActions.setNumberOfPlayers}
+          stateKey="numberOfPlayers"
+          cypressSelector="number-of-players-slider"
+        />
+        <SettingSlider
+          config={CHARACTERS_PER_PERSON}
+          setValueAction={settingsActions.setCharactersPerPerson}
+          stateKey="charactersPerPerson"
+          cypressSelector="character-per-person-slider"
+        />
+        <SettingSlider
+          config={SECONDS_FOR_ROUND}
+          setValueAction={settingsActions.setSecondsForRound}
+          stateKey="secondsForRound"
+          cypressSelector="seconds-for-round-slider"
+        />
+        <SettingSlider
+          config={SECONDS_FOR_CHARADES}
+          setValueAction={settingsActions.setSecondsForCharades}
+          stateKey="secondsForCharades"
+          cypressSelector="seconds-for-charades-slider"
+        />
+
+      </div>
       <BaseLink
         type="primary"
         to={routes.characters}
