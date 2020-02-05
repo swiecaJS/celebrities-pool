@@ -58,7 +58,13 @@ const AddCharacter: React.FC = () => {
           {...bindCharacterName}
         />
       </label>
-      <BaseButton type="submit" cypressSelector="submit-character-btn">{t('submit')}</BaseButton>
+      <BaseButton
+        type="submit"
+        cypressSelector="submit-character-btn"
+        isDisabled={!characterName}
+
+      >{t('submit')}
+      </BaseButton>
     </form>
   ) : (
     <div className={styles.notReady}>
