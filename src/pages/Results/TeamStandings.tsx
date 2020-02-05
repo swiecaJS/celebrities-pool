@@ -14,13 +14,13 @@ const TeamStandings: React.FC = () => {
 
   return (
     <div className={styles.table}>
-      <BaseText tag="p" size={6} className={styles.tableHeader}>
+      <BaseText tag="p" size={7} className={styles.tableHeader}>
         {t('details')}
       </BaseText>
-      <BaseText tag="p" size={5} className={styles.tableResult}>
+      <BaseText tag="p" size={6} className={styles.tableResult}>
         {t('points', { team: 'A', points: teamPoints.A })}
       </BaseText>
-      <BaseText tag="p" size={5} className={styles.tableResult}>
+      <BaseText tag="p" size={6} className={styles.tableResult}>
         {t('points', { team: 'B', points: teamPoints.B })}
       </BaseText>
     </div>

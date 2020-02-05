@@ -28,12 +28,14 @@ const Results: React.FC = () => {
   };
 
   return (
-    <div data-cy="game-results">
+    <div data-cy="game-results" className={styles.wrapper}>
       <BaseText tag="h1" size={8} isBold className={styles.header}>
         {t('header')}
       </BaseText>
-      <Winner />
-      <TeamStandings />
+      <div>
+        <Winner />
+        <TeamStandings />
+      </div>
       <BaseButton type="button" onClick={onResetGame} cypressSelector="reset-game-btn">
         {t('playAgain')}
       </BaseButton>

@@ -18,7 +18,7 @@ const Winner: React.FC = () => {
       <input type="hidden" data-cy="game-winner" value={winner} />
 
       {isDraw ? (
-        <BaseText tag="p" size={7} className={styles.result} cypressSelector="result-draw">
+        <BaseText tag="p" size={8} className={styles.result} cypressSelector="result-draw">
           {t('draw')}
         </BaseText>
       ) : (
