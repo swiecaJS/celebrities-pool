@@ -41,21 +41,3 @@ const reducer = createReducer(initialState, builder => builder
   .addCase(resetGame, () => ({ ...initialState })));
 
 export default reducer;
-
-// export default (
-//   // state = initialStateForTests,
-//   state = initialState,
-//   incomingAction: AnyAction,
-// ): CharactersState => {
-//   const action = incomingAction as CharactersActionTypes;
-
-//   switch (action.type) {
-//     case ADD_CHARACTER:
-//       return {
-//         ...state,
-//         characters: [...state.characters, action.payload.character],
-//       };
-//     default:
-//       return state;
-//   }
-// };
