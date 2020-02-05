@@ -9,6 +9,7 @@ import Controls from './Controls';
 import CharacterToGuess from './CharacterToGuess';
 import Header from './Header';
 import RoundOpening from './RoundOpening';
+import ProgressBar from './ProgressBar';
 
 import styles from './Game.module.scss';
 
@@ -31,9 +32,7 @@ const Start: React.FC = () => {
           <div data-cy="game-standings">
             <Header />
             <ScoreBoard />
-            <div className={styles.progressBar}>
-              <span className={styles.progressBarMeter} />
-            </div>
+            <ProgressBar />
           </div>
           <CharacterToGuess />
           <Controls />
