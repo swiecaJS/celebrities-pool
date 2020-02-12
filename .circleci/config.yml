@@ -50,6 +50,14 @@ jobs:
           at: ~/repo
       - run: yarn lint
 
+  run_e2e_tests:
+    executor: node
+    steps:
+      - attach_workspace:
+        at: ~/repo
+      - run: yarn test:e2e
+
+
   build_statics:
     executor: node
     steps:
@@ -69,17 +77,18 @@ workflows:
   build-and-deploy:
     jobs:
       - checkout_code
-      - run_linter:
-          requires:
-            - checkout_code
-      - run_unit_tests:
-          requires:
-            - checkout_code
-            - run_linter
+      # - run_linter:
+      #     requires:
+      #       - checkout_code
+      # - run_unit_tests:
+      #     requires:
+      #       - checkout_code
+      #       - run_linter
       - build_statics:
           requires:
             - checkout_code
-            - run_unit_tests
-          filters:
-            branches:
-              only: master
+            # - run_unit_tests
+      - run_e2e_tests:
+          requires:
+            - checkout_code
+            - build_statics
