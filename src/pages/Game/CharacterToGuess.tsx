@@ -8,7 +8,7 @@ import BaseText from 'components/BaseText/BaseText';
 import styles from './Game.module.scss';
 
 const CharacterToGuess: React.FC = () => {
-  const { t } = useTranslation('game');
+  // const { t } = useTranslation('game');
 
   const isPlayerReady = useGetIsReady();
   const currentTeam = useGetCurrentTeam();
@@ -21,7 +21,7 @@ const CharacterToGuess: React.FC = () => {
         size={!isPlayerReady ? 6 : 3}
         className={styles.characterHelp}
       >
-        In this round, use as many words as you wish to describe a character 😎
+        In this round, use as many words as you wish to describe a character
       </BaseText>
 
       {!isPlayerReady ? (
