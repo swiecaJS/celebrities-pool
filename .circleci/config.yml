@@ -55,6 +55,9 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
+      - restorecache
+      - run: yarn
+      - savecache
       - run: yarn test:e2e
 
 
