@@ -1,5 +1,9 @@
 version: 2.1
 
+
+orbs:
+  cypress: cypress-io/cypress@1
+
 executors:
   node:
     working_directory: ~/repo
@@ -80,9 +84,19 @@ workflows:
   build-and-deploy:
     jobs:
       - checkout_code
-      - build_statics:
+      - cypress/install:
+          build: 'yarn build'  # run a custom app build step
+      - cypress/run:
           requires:
-            - checkout_code
-      - run_e2e_tests:
-          requires:
-            - build_statics
+            - cypress/install
+          record: true        # record results on Cypress Dashboard
+          parallel: true      # split all specs across machines
+          parallelism: 4      # use 4 CircleCI machines to finish quickly
+          group: 'all tests'  # name this group "all tests" on the dashboard
+          start: 'yarn serve'  # start server before running tests
+      # - build_statics:
+      #     requires:
+      #       - checkout_code
+      # - run_e2e_tests:
+      #     requires:
+      #       - build_statics
