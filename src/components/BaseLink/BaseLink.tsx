@@ -7,7 +7,7 @@ import BaseText from 'components/BaseText/BaseText';
 import styles from './BaseLink.module.scss';
 
 interface Props {
-  type: 'primary';
+  type: 'primary' | 'secondary';
   to: string;
   className?: string;
   cypressSelector?: string;

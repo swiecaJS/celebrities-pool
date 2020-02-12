@@ -1,17 +1,30 @@
 @import 'shared/styles/index.scss';
 
-.primary {
+.base {
   box-shadow: $shadow;
   display: block;
   margin: 0 auto;
   width: 90%;
   padding: 15px 0;
   border-radius: 10px;
-  background: $black;
   text-decoration: none;
+
+}
+
+.primary {
+  @extend .base;
+  background: $black;
   
   &Text {
     color: $white;
+  }
+}
+
+.secondary {
+  background: $white;
+
+  &Text {
+    color: $black;
   }
 }
 

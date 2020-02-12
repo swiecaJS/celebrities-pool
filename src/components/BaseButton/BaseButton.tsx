@@ -11,6 +11,7 @@ interface Props {
   className?: 'string';
   cypressSelector?: string;
   isDisabled?: boolean;
+  isSecondary?: boolean;
 }
 
 const BaseButton: React.FC<Props> = ({
@@ -19,15 +20,26 @@ const BaseButton: React.FC<Props> = ({
   children,
   cypressSelector,
   isDisabled,
+  isSecondary,
 }) => (
   <button
     onClick={onClick}
     type={type}
-    className={cn(styles.primary, { [styles.disabled]: isDisabled })}
+    className={cn(styles.primary, {
+      [styles.disabled]: isDisabled,
+      [styles.secondary]: isSecondary,
+    })}
     data-cy={cypressSelector}
     disabled={isDisabled}
   >
-    <BaseText tag="span" size={5} className={styles.primaryText} isBold>
+    <BaseText
+      tag="span"
+      size={5}
+      className={cn(styles.primaryText, {
+        [styles.secondaryText]: isSecondary,
+      })}
+      isBold
+    >
       {children}
     </BaseText>
   </button>
