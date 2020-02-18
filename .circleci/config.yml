@@ -1,14 +1,15 @@
 version: 2.1
 
 
-orbs:
-  cypress: cypress-io/cypress@1
-
 executors:
   node:
     working_directory: ~/repo
     docker:
       - image: circleci/node:10.15.3
+  cypress-machine:
+    description: Docker container with Node 12, Cypress dependencies and Chrome 78
+    docker:
+      - image: cypress/browsers:node12.8.1-chrome78-ff70
 
 commands:
     restorecache:
@@ -55,13 +56,14 @@ jobs:
       - run: yarn lint
 
   run_e2e_tests:
-    executor: node
+    executor: cypress-machine
     steps:
       - attach_workspace:
           at: ~/repo
       - restorecache
       - run: yarn
       - savecache
+      - run: yarn build
       - run: yarn test:e2e
 
 
@@ -84,17 +86,6 @@ workflows:
   build-and-deploy:
     jobs:
       - checkout_code
-      - cypress/install:
-          yarn: true
-          build: 'yarn build'  # run a custom app build step
-      - cypress/run:
-          yarn: true
+      - run_e2e_tests:
           requires:
-            - cypress/install
-          start: 'yarn serve'  # start server before running tests
-      # - build_statics:
-      #     requires:
-      #       - checkout_code
-      # - run_e2e_tests:
-      #     requires:
-      #       - build_statics
+            - checkout_code
