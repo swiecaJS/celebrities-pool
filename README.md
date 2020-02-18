@@ -1,4 +1,4 @@
-# Sack of Celebrities
+# Celebrities Pool
 
 The party game that can be played on the phone!
 
