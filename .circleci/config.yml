@@ -61,10 +61,11 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - restorecache
-      - run: yarn
+      - run: ls
+      - run: cd ~/repo && yarn
       - savecache
-      - run: yarn build
-      - run: yarn test:e2e
+      - run: cd ~/repo && yarn build
+      - run: cd ~/repo && yarn test:e2e
 
 
   build_statics:
