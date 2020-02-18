@@ -1,10 +1,15 @@
 version: 2.1
 
+
 executors:
   node:
     working_directory: ~/repo
     docker:
       - image: circleci/node:10.15.3
+  cypress-machine:
+    description: Docker container with Node 12, Cypress dependencies and Chrome 78
+    docker:
+      - image: cypress/browsers:node12.8.1-chrome78-ff70
 
 commands:
     restorecache:
@@ -50,6 +55,16 @@ jobs:
           at: ~/repo
       - run: yarn lint
 
+  run_e2e_tests:
+    executor: cypress-machine
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run: cd ~/repo && yarn
+      - run: cd ~/repo && yarn build
+      - run: cd ~/repo && yarn test:e2e
+
+
   build_statics:
     executor: node
     steps:
@@ -69,17 +84,6 @@ workflows:
   build-and-deploy:
     jobs:
       - checkout_code
-      - run_linter:
+      - run_e2e_tests:
           requires:
             - checkout_code
-      - run_unit_tests:
-          requires:
-            - checkout_code
-            - run_linter
-      - build_statics:
-          requires:
-            - checkout_code
-            - run_unit_tests
-          filters:
-            branches:
-              only: master

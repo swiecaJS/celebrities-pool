@@ -7,7 +7,7 @@ export const initialState: SettingsState = {
   numberOfPlayers: 4,
   charactersPerPerson: 4,
   secondsForRound: 30,
-  secondsForCharades: 45
+  secondsForCharades: 45,
 };
 
 export default (
