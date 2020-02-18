@@ -1,6 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router';
-import i18n from 'config/translations/i18n';
+import { useParams } from 'react-router-dom';
 
 import BaseText from 'components/BaseText/BaseText';
 import BaseLink from 'components/BaseLink/BaseLink';
@@ -27,7 +26,7 @@ const Layout: React.FC = () => {
       <div>
         {routeConfig.content.map(text => (
           <BaseText tag="p" key={text} size={4}>
-            text
+            {text}
           </BaseText>
         ))}
       </div>
