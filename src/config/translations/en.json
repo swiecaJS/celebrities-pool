@@ -1,4 +1,8 @@
 {
+  "start": {
+    "title": "Celebrities Pool",
+    "cta": "Start"
+  },
   "settings": {
     "header": "Game settings",
     "charactersPerPerson": "Characters added by one player:",
