@@ -1,4 +1,8 @@
 {
+  "start": {
+    "title": "Celebrities Pool",
+    "cta": "Start"
+  },
   "settings": {
     "header": "Game settings",
     "charactersPerPerson": "Characters added by one player:",
@@ -24,5 +28,46 @@
     "points": "Team {{team}} : {{points}} points",
     "draw": "We have a tie! 🙈",
     "playAgain": "Play Again!"
+  },
+  "manual": {
+    "intro": {
+      "header": "At the begging",
+      "content": [
+        "Split into two teams",
+        "Every one will have to think about some characters",
+        "During the game you will be guessing those characters" 
+      ],
+      "linkLabel": "Next"
+    },
+    "round-1": {
+      "header": "Round 1",
+      "content": [
+        "sth",
+        "sth 1",
+        "sth 3",
+        "sth 5" 
+      ],
+      "linkLabel": "Next"
+    },
+    "round-2": {
+      "header": "Round 2",
+      "content": [
+        "sth",
+        "sth 1",
+        "sth 3",
+        "sth 5" 
+      ],
+      "linkLabel": "Next"
+    },
+    "round-3": {
+      "header": "Round 3",
+      "content": [
+        "sth",
+        "sth 1",
+        "sth 3",
+        "sth 5" 
+      ],
+      "linkLabel": "Begin"
+    }
   }
 }

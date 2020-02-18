@@ -12,9 +12,14 @@ const GameRules: React.FC = () => (
     <BaseText tag="h1" size={8}>
         Do you know how to play?
     </BaseText>
-    <BaseLink to={routes.settings} type="primary" cypressSelector="user-know-rules-btn">
+    <div className={styles.buttons}>
+      <BaseLink to={routes.settings} type="primary" cypressSelector="user-know-rules-btn">
         Yes
-    </BaseLink>
+      </BaseLink>
+      <BaseLink to="/manual/intro" type="secondary" cypressSelector="show-rules-button">
+        No
+      </BaseLink>
+    </div>
   </section>
 );
 
