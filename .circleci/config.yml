@@ -60,10 +60,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-      - restorecache
-      - run: ls
       - run: cd ~/repo && yarn
-      - savecache
       - run: cd ~/repo && yarn build
       - run: cd ~/repo && yarn test:e2e
 
