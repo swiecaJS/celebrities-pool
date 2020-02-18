@@ -1,7 +1,11 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { useGetTimeLeft, useGetTeamPoints, useGetHowManyLeftToGuess } from 'store/game/selectors';
+import {
+  useGetTimeLeft,
+  useGetTeamPoints,
+  useGetHowManyLeftToGuess,
+} from 'store/game/selectors';
 
 import BaseText from 'components/BaseText/BaseText';
 
@@ -33,9 +37,12 @@ const ScoreBoard: React.FC = () => {
           </BaseText>
         </div>
       </div>
-      <BaseText tag="p">
-        {howManyLeftToGuess} characters left to guess
-      </BaseText>
+      <BaseText tag="p">{howManyLeftToGuess} characters left to guess</BaseText>
+      <input
+        type="hidden"
+        data-cy="characters-left-to-guess"
+        value={howManyLeftToGuess}
+      />
     </>
   );
 };
