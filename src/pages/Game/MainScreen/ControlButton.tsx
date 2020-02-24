@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 
-import styles from './Game.module.scss';
+import styles from './MainScreen.module.scss';
 
 interface Props {
   type: 'correct' | 'notCorrect';
@@ -26,8 +26,8 @@ const config = {
 const ControlButton: React.FC<Props> = ({ type, onClick }) => {
   const btnConfig = config[type];
   return (
-
     <button
+      type="button"
       className={cn(styles.controlsButton, styles[btnConfig.btnClassName])}
       onClick={onClick}
       data-cy={type}

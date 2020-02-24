@@ -4,7 +4,7 @@ import { useGetCurrentTeam, useGetIsReady, useGetCharacterToGuess } from 'store/
 
 import BaseText from 'components/BaseText/BaseText';
 
-import styles from './Game.module.scss';
+import styles from './MainScreen.module.scss';
 
 const CharacterToGuess: React.FC = () => {
   // const { t } = useTranslation('game');

@@ -11,7 +11,7 @@ import BaseButton from 'components/BaseButton/BaseButton';
 
 import ControlButton from './ControlButton';
 
-import styles from './Game.module.scss';
+import styles from './MainScreen.module.scss';
 
 const Controls: React.FC = () => {
   const { t } = useTranslation('game');

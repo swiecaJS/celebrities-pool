@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { getTimeLeft } from 'store/game/selectors';
 import { getSecondsForRound } from 'store/settings/selectors';
 
-import styles from './Game.module.scss';
+import styles from './MainScreen.module.scss';
 
 const ProgressBar: React.FC = () => {
   const timeLeft = useSelector(getTimeLeft);

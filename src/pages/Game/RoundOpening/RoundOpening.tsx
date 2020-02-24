@@ -9,7 +9,7 @@ import { startRound } from 'store/game/actions';
 import BaseText from 'components/BaseText/BaseText';
 import BaseButton from 'components/BaseButton/BaseButton';
 
-import styles from './Game.module.scss';
+import styles from './RoundOpening.module.scss';
 
 const RoundOpening: React.FC = () => {
   const { t } = useTranslation('roundOpening');

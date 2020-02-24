@@ -5,7 +5,7 @@ import { useGetCurrentTeam, useGetRound } from 'store/game/selectors';
 
 import BaseText from 'components/BaseText/BaseText';
 
-import styles from './Game.module.scss';
+import styles from './MainScreen.module.scss';
 
 const Header: React.FC = () => {
   const { t } = useTranslation('game');

@@ -10,7 +10,7 @@ import GameRules from 'pages/GameRules/GameRules';
 import Manual from 'pages/GameRules/Manual/Manual';
 import Settings from 'pages/Settings/Settings';
 import Characters from 'pages/Characters/Characters';
-import Game from 'pages/Game/Game';
+import Game from 'pages/Game';
 import Results from 'pages/Results/Results';
 
 

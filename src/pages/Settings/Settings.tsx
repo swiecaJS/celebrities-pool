@@ -43,12 +43,13 @@ const Settings: React.FC = () => {
           stateKey="secondsForRound"
           cypressSelector="seconds-for-round-slider"
         />
-        <SettingSlider
+        {/* TO DO - handle in game */}
+        {/* <SettingSlider
           config={SECONDS_FOR_CHARADES}
           setValueAction={settingsActions.setSecondsForCharades}
           stateKey="secondsForCharades"
           cypressSelector="seconds-for-charades-slider"
-        />
+        /> */}
 
       </div>
       <BaseLink

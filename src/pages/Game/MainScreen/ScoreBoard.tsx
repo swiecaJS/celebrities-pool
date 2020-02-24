@@ -9,7 +9,7 @@ import {
 
 import BaseText from 'components/BaseText/BaseText';
 
-import styles from './Game.module.scss';
+import styles from './MainScreen.module.scss';
 
 const ScoreBoard: React.FC = () => {
   const { t } = useTranslation('game');
