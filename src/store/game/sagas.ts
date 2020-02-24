@@ -24,7 +24,9 @@ export function* prepareRound() {
   yield saga.put(gameActions.setTimeLeft(settings.secondsForRound));
 
   const characters: Character[] = yield saga.select(getCharacters);
-  const mappedCharacters = characters.map(({ description }) => description);
+  const mappedCharacters = characters
+    .map(({ description }) => description)
+    .filter((value, index, self) => self.indexOf(value) === index);
 
   yield saga.put(
     gameActions.setCharactersLeftToGuess(shuffleArray(mappedCharacters)),
@@ -84,7 +86,6 @@ export function* handleGuess(
     yield saga.put(gameActions.outOfCharacters());
     return;
   }
-
 
   const nextGuess = leftToGuess[0];
   yield saga.put(gameActions.setCurrentCharacter(nextGuess));
