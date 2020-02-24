@@ -10,9 +10,7 @@ const ProgressBar: React.FC = () => {
   const timeLeft = useSelector(getTimeLeft);
   const initialTime = useSelector(getSecondsForRound);
 
-  console.log('timeLeft', timeLeft, 'initialTime', initialTime);
-  console.log();
-  const width = (1 - (timeLeft! / initialTime)) * 100;
+  const width = (timeLeft! / initialTime) * 100;
   return (
     <div className={styles.progressBar}>
       <span
