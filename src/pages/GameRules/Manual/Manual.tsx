@@ -23,11 +23,13 @@ const Layout: React.FC = () => {
       <BaseText tag="h1" size={8} isBold>
         {routeConfig.header}
       </BaseText>
-      <div>
+      <div className={gameStyles.manual}>
         {routeConfig.content.map(text => (
-          <BaseText tag="p" key={text} size={4}>
-            {text}
-          </BaseText>
+          <div className={gameStyles.manualContent}>
+            <BaseText tag="p" key={text} size={5}>
+              {text}
+            </BaseText>
+          </div>
         ))}
       </div>
       <BaseLink type="primary" to={routeConfig.nextLinkHref}>
