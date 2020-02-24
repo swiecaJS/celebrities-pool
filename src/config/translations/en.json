@@ -29,6 +29,13 @@
     "draw": "We have a tie! 🙈",
     "playAgain": "Play Again!"
   },
+  "roundOpening": {
+    "header": " Round {{currentRound}} is about to begin",
+    "cta": "Continue",
+    "rules-1": "In this round Player giving clues can say everything. Team has as many guess as they need",
+    "rules-2": "In this round Player giving clues can say ONE WORD. The team has ONE GUESS",
+    "rules-3": "Charades time! But team has only one guess"
+  },
   "manual": {
     "intro": {
       "header": "At the begging",

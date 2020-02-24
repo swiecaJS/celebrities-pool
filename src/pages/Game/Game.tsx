@@ -24,11 +24,11 @@ const Start: React.FC = () => {
 
   // TO DO - simplify
   return (
-    <section className={styles.wrapper}>
+    <>
       {isRoundOpening ? (
         <RoundOpening />
       ) : (
-        <>
+        <section className={styles.wrapper}>
           <div data-cy="game-standings">
             <Header />
             <ScoreBoard />
@@ -36,9 +36,9 @@ const Start: React.FC = () => {
           </div>
           <CharacterToGuess />
           <Controls />
-        </>
+        </section>
       )}
-    </section>
+    </>
   );
 };
 
