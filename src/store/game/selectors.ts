@@ -14,6 +14,7 @@ export const getRound = (state: AppState) => getGameState(state).round;
 export const getIsRoundOpening = (state: AppState) => getGameState(state).isRoundOpening;
 export const getCurrentCharacterToGuess = (state: AppState) => getGameState(state).currentCharacter;
 export const getHasGameEnded = (state: AppState) => getGameState(state).hasGameEnded;
+export const getIsPlayerReady = (state: AppState) => getGameState(state).isReady;
 
 export const getTeamPoints = createSelector(getGameState, res => res.points);
 export const getWinner = createSelector(getTeamPoints, (points) => {

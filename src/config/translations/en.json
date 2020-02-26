@@ -29,45 +29,53 @@
     "draw": "We have a tie! 🙈",
     "playAgain": "Play Again!"
   },
+  "roundOpening": {
+    "header": " Round {{currentRound}} is about to begin",
+    "cta": "Continue",
+    "rules-1": "In this round Player giving clues can say everything. Team has as many guess as they need",
+    "rules-2": "In this round Player giving clues can say ONE WORD. The team has ONE GUESS",
+    "rules-3": "Charades time! But team has only one guess"
+  },
+  "game": {
+    "getReady": "TEAM {{currentTeam}} GET READY"
+  },
   "manual": {
     "intro": {
       "header": "At the begging",
       "content": [
         "Split into two teams",
-        "Every one will have to think about some characters",
-        "During the game you will be guessing those characters" 
+        "The goal of the game if to guess as much characters in 3 rounds",
+        "In every turn there will be one 'Cluegiver' who will have limited time to help his team guess as many characters as possible",
+        "The characters to guess will be invented by you as a first step of game!" 
       ],
       "linkLabel": "Next"
     },
     "round-1": {
       "header": "Round 1",
       "content": [
-        "sth",
-        "sth 1",
-        "sth 3",
-        "sth 5" 
+        "In this round 'Cluegiver' can say everything. There are no limits.",
+        "Try to remember guessed characters because they will be reused in the whole game",
+        "If the time ends, team changes",
+        "You will be guessing until all of entered characters all guessed"
       ],
       "linkLabel": "Next"
     },
     "round-2": {
       "header": "Round 2",
       "content": [
-        "sth",
-        "sth 1",
-        "sth 3",
-        "sth 5" 
+        "Now 'Cluegiver' can use only 1 WORD to describe character. After word is said he/she should be silent, and also does not help team in any other way",
+        "What is more, the team has only ONE GUESS. If the guess is wrong, this character goes back to memory, you have to press red button. ",
+        "The team can still guess next one until the time ends"
       ],
       "linkLabel": "Next"
     },
     "round-3": {
       "header": "Round 3",
       "content": [
-        "sth",
-        "sth 1",
-        "sth 3",
-        "sth 5" 
+        "Charades time! 'Cluegiver' cannot make any sound, but he can use his body moves to help you!" ,
+        "Again team has ONE GUESS per character"
       ],
-      "linkLabel": "Begin"
+      "linkLabel": "Begin setup"
     }
   }
 }

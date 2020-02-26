@@ -9,7 +9,6 @@ import BaseLink from 'components/BaseLink/BaseLink';
 import {
   CHARACTERS_PER_PERSON,
   NUMBER_OF_PLAYERS,
-  SECONDS_FOR_CHARADES,
   SECONDS_FOR_ROUND,
 } from './constants';
 import SettingSlider from './SettingSlider';
@@ -43,12 +42,13 @@ const Settings: React.FC = () => {
           stateKey="secondsForRound"
           cypressSelector="seconds-for-round-slider"
         />
-        <SettingSlider
+        {/* TO DO - handle in game */}
+        {/* <SettingSlider
           config={SECONDS_FOR_CHARADES}
           setValueAction={settingsActions.setSecondsForCharades}
           stateKey="secondsForCharades"
           cypressSelector="seconds-for-charades-slider"
-        />
+        /> */}
 
       </div>
       <BaseLink
