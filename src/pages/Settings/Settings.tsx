@@ -9,7 +9,6 @@ import BaseLink from 'components/BaseLink/BaseLink';
 import {
   CHARACTERS_PER_PERSON,
   NUMBER_OF_PLAYERS,
-  SECONDS_FOR_CHARADES,
   SECONDS_FOR_ROUND,
 } from './constants';
 import SettingSlider from './SettingSlider';
