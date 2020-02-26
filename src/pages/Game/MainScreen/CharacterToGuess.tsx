@@ -1,17 +1,20 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 
-import { useGetCurrentTeam, useGetIsReady, useGetCharacterToGuess } from 'store/game/selectors';
+import { getCurrentTeam, getIsPlayerReady, getCurrentCharacterToGuess, getRound } from 'store/game/selectors';
 
 import BaseText from 'components/BaseText/BaseText';
 
 import styles from './MainScreen.module.scss';
 
 const CharacterToGuess: React.FC = () => {
-  // const { t } = useTranslation('game');
+  const { t } = useTranslation(['game', 'roundOpening']);
 
-  const isPlayerReady = useGetIsReady();
-  const currentTeam = useGetCurrentTeam();
-  const characterToGuess = useGetCharacterToGuess();
+  const isPlayerReady = useSelector(getIsPlayerReady);
+  const currentTeam = useSelector(getCurrentTeam);
+  const characterToGuess = useSelector(getCurrentCharacterToGuess);
+  const round = useSelector(getRound);
 
   return (
     <div className={styles.character}>
@@ -20,7 +23,7 @@ const CharacterToGuess: React.FC = () => {
         size={!isPlayerReady ? 6 : 3}
         className={styles.characterHelp}
       >
-        In this round, use as many words as you wish to describe a character
+        {t(`roundOpening:rules-${round}`)}
       </BaseText>
 
       {!isPlayerReady ? (
@@ -30,8 +33,7 @@ const CharacterToGuess: React.FC = () => {
           size={7}
           className={styles.characterHelp}
         >
-          {/* {t('getReady',{currentTeam: 'A'})} */}
-          {`TEAM ${currentTeam} GET READY`}
+          {t('getReady', { currentTeam })}
         </BaseText>
       ) : (
         <div>

@@ -36,6 +36,9 @@
     "rules-2": "In this round Player giving clues can say ONE WORD. The team has ONE GUESS",
     "rules-3": "Charades time! But team has only one guess"
   },
+  "game": {
+    "getReady": "TEAM {{currentTeam}} GET READY"
+  },
   "manual": {
     "intro": {
       "header": "At the begging",
