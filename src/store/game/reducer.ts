@@ -21,10 +21,7 @@ export const initialState: GameState = {
   isReady: false,
   isRoundOpening: true,
   hasGameEnded: false,
-  // on every round start we swap team guessing
-  // we want to always start with team A
-  // TO DO - handle it in saga
-  teamGuessing: 'B',
+  teamGuessing: 'A',
   round: 1,
   points: {
     A: 0,
