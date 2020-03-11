@@ -30,9 +30,7 @@ export const getWinner = createSelector(getTeamPoints, (points) => {
   return undefined;
 });
 
-export const useGetIsReady = () => useSelector(getGameState).isReady;
 export const useGetRound = () => useSelector(getRound);
 export const useGetCurrentTeam = () => useSelector(getCurrentTeam);
-export const useGetCharacterToGuess = () => useSelector(getCurrentCharacterToGuess);
 export const useGetIsRoundOpening = () => useSelector(getIsRoundOpening);
 export const useGetHasGameEnded = () => useSelector(getHasGameEnded);
