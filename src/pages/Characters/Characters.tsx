@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import { getTotalNumberOfCharacters } from 'store/settings/selectors';
-import { useGetCharacters } from 'store/characters/selectors';
+import { getCharacters } from 'store/characters/selectors';
 
 import BaseText from 'components/BaseText/BaseText';
 import AddCharacter from './AddCharacter';
@@ -16,7 +16,7 @@ const CharacterPage: React.FC = () => {
   const { t } = useTranslation('characters');
 
   const totalNumberOfCharacters = useSelector(getTotalNumberOfCharacters);
-  const characters = useGetCharacters();
+  const characters = useSelector(getCharacters);
 
   useEffect(() => {
     if (characters.length >= totalNumberOfCharacters) setAddingFinished(true);
