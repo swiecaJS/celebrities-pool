@@ -1,10 +1,11 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 
 import {
-  useGetTimeLeft,
-  useGetTeamPoints,
-  useGetHowManyLeftToGuess,
+  getTimeLeft,
+  getTeamPoints,
+  getHowManyLeftToGuess,
 } from 'store/game/selectors';
 
 import BaseText from 'components/BaseText/BaseText';
@@ -14,9 +15,9 @@ import styles from './MainScreen.module.scss';
 const ScoreBoard: React.FC = () => {
   const { t } = useTranslation('game');
 
-  const secondsLeft = useGetTimeLeft();
-  const points = useGetTeamPoints();
-  const howManyLeftToGuess = useGetHowManyLeftToGuess();
+  const secondsLeft = useSelector(getTimeLeft);
+  const points = useSelector(getTeamPoints);
+  const howManyLeftToGuess = useSelector(getHowManyLeftToGuess);
 
   return (
     <>
