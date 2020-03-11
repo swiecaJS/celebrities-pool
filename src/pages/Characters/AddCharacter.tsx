@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { addCharacter } from 'store/characters/actions';
 import { Character } from 'store/characters/types';
-import { useGetGameSettings } from 'store/settings/selectors';
+import { getSettingsState } from 'store/settings/selectors';
 import useInput from 'utils/useTextInput';
 
 import BaseText from 'components/BaseText/BaseText';
@@ -27,7 +27,7 @@ const AddCharacter: React.FC = () => {
     (character: Character) => dispatch(addCharacter(character)),
     [dispatch],
   );
-  const settings = useGetGameSettings();
+  const settings = useSelector(getSettingsState);
 
   const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();

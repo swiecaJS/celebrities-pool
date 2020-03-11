@@ -1,18 +1,12 @@
-import { useSelector } from 'react-redux';
-
 import { AppState } from '../types';
 import { initialState, SettingsState } from './reducer';
 
-export const getStateSubtree = (state: AppState): SettingsState => state.settings || initialState;
+export const getSettingsState = (state: AppState): SettingsState => state.settings || initialState;
 
 export const getTotalNumberOfCharacters = (state: AppState): number => {
-  const settings = getStateSubtree(state);
+  const settings = getSettingsState(state);
 
   return settings.charactersPerPerson * settings.numberOfPlayers;
 };
 
-export const getSecondsForRound = (state: AppState) => getStateSubtree(state).secondsForRound;
-
-export const useGetGameSettings = () => useSelector(getStateSubtree);
-
-export const useGetTotalNumberOfCharacters = () => useSelector(getTotalNumberOfCharacters);
+export const getSecondsForRound = (state: AppState) => getSettingsState(state).secondsForRound;
