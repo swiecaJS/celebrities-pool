@@ -2,7 +2,6 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-
 import { getRound, getCurrentTeam } from 'store/game/selectors';
 
 import BaseText from 'components/BaseText/BaseText';

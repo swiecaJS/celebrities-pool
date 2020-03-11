@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect';
-import { useSelector } from 'react-redux';
 
 import { AppState } from '../types';
 import { GameState, initialState } from './reducer';
@@ -29,7 +28,3 @@ export const getWinner = createSelector(getTeamPoints, (points) => {
   }
   return undefined;
 });
-
-export const useGetCurrentTeam = () => useSelector(getCurrentTeam);
-export const useGetIsRoundOpening = () => useSelector(getIsRoundOpening);
-export const useGetHasGameEnded = () => useSelector(getHasGameEnded);
