@@ -1,8 +1,8 @@
 import * as saga from 'redux-saga/effects';
 import { REHYDRATE as rehydrateAction } from 'redux-persist';
 
-import { getStateSubtree as settingsSelector } from 'store/settings/selectors';
-import { SettingsState } from 'store/settings/types';
+import { getSettingsState } from 'store/settings/selectors';
+import { SettingsState } from 'store/settings/reducer';
 
 import { getCharacters } from 'store/characters/selectors';
 import { Character } from 'store/characters/types';
@@ -20,7 +20,7 @@ import { shuffleArray, getOtherTeamKey } from './utils';
 import { TeamKey, Round } from './types';
 
 export function* prepareRound() {
-  const settings: SettingsState = yield saga.select(settingsSelector);
+  const settings: SettingsState = yield saga.select(getSettingsState);
   yield saga.put(gameActions.setTimeLeft(settings.secondsForRound));
 
   const characters: Character[] = yield saga.select(getCharacters);
@@ -38,6 +38,7 @@ export function* prepareRound() {
 export function* nextRound() {
   const currentRound: Round = yield saga.select(getRound);
 
+  // eslint-disable-next-line default-case
   switch (currentRound) {
     case 1:
     case 2:
@@ -110,7 +111,7 @@ export function* startTurn() {
 }
 
 export function* prepareNextTurn() {
-  const settings: SettingsState = yield saga.select(settingsSelector);
+  const settings: SettingsState = yield saga.select(getSettingsState);
   const previousGuessingTeam: TeamKey = yield saga.select(getCurrentTeam);
 
   const leftToGuess: string[] = yield saga.select(getAllLeftToGuess);

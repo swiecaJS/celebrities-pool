@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect';
-import { useSelector } from 'react-redux';
 
 import { AppState } from '../types';
 import { GameState, initialState } from './reducer';
@@ -15,24 +14,17 @@ export const getIsRoundOpening = (state: AppState) => getGameState(state).isRoun
 export const getCurrentCharacterToGuess = (state: AppState) => getGameState(state).currentCharacter;
 export const getHasGameEnded = (state: AppState) => getGameState(state).hasGameEnded;
 export const getIsPlayerReady = (state: AppState) => getGameState(state).isReady;
-
-export const getTeamPoints = createSelector(getGameState, res => res.points);
+export const getTeamPoints = (state: AppState) => getGameState(state).points;
+export const getHowManyLeftToGuess = createSelector(
+  getGameState,
+  ({ charactersLeftToGuess, currentCharacter }) => charactersLeftToGuess.length + (currentCharacter ? 1 : 0),
+);
 export const getWinner = createSelector(getTeamPoints, (points) => {
   if (points.A > points.B) {
     return 'A';
-  } if (points.A < points.B) {
+  }
+  if (points.A < points.B) {
     return 'B';
   }
   return undefined;
 });
-
-
-export const useGetTimeLeft = () => useSelector(getTimeLeft);
-export const useGetTeamPoints = () => useSelector(getGameState).points;
-export const useGetIsReady = () => useSelector(getGameState).isReady;
-export const useGetRound = () => useSelector(getRound);
-export const useGetCurrentTeam = () => useSelector(getCurrentTeam);
-export const useGetCharacterToGuess = () => useSelector(getCurrentCharacterToGuess);
-export const useGetHowManyLeftToGuess = () => useSelector(getAllLeftToGuess).length + (useSelector(getCurrentCharacterToGuess) ? 1 : 0);
-export const useGetIsRoundOpening = () => useSelector(getIsRoundOpening);
-export const useGetHasGameEnded = () => useSelector(getHasGameEnded);

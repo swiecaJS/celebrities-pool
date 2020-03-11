@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Action } from 'redux';
 import { useTranslation } from 'react-i18next';
 
 import { AppState } from 'store/types';
-import { SettingsActionTypes } from 'store/settings/types';
 
 import BaseSlider from 'components/BaseSlider/BaseSlider';
 import { SettingSliderConfig } from './types';
@@ -11,12 +11,11 @@ import { SettingSliderConfig } from './types';
 import styles from './SettingsSlider.module.scss';
 
 interface Props {
-  setValueAction: (value: any) => SettingsActionTypes;
+  setValueAction: (value: any) => Action;
   stateKey:
   | 'numberOfPlayers'
   | 'charactersPerPerson'
-  | 'secondsForRound'
-  | 'secondsForCharades';
+  | 'secondsForRound';
   config: SettingSliderConfig;
   cypressSelector: string;
 }

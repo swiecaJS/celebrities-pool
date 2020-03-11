@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 
-import { useGetRound } from 'store/game/selectors';
+import { getRound } from 'store/game/selectors';
 import { startRound } from 'store/game/actions';
 
 import BaseText from 'components/BaseText/BaseText';
@@ -17,7 +17,7 @@ const RoundOpening: React.FC = () => {
   const onRoundStart = useCallback(() => {
     dispatch(startRound());
   }, [dispatch]);
-  const currentRound = useGetRound();
+  const currentRound = useSelector(getRound);
 
   return (
     <div data-cy="round-opening" className={styles.wrapper}>
