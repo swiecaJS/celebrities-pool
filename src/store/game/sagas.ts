@@ -2,7 +2,7 @@ import * as saga from 'redux-saga/effects';
 import { REHYDRATE as rehydrateAction } from 'redux-persist';
 
 import { getStateSubtree as settingsSelector } from 'store/settings/selectors';
-import { SettingsState } from 'store/settings/types';
+import { SettingsState } from 'store/settings/reducer';
 
 import { getCharacters } from 'store/characters/selectors';
 import { Character } from 'store/characters/types';
@@ -38,6 +38,7 @@ export function* prepareRound() {
 export function* nextRound() {
   const currentRound: Round = yield saga.select(getRound);
 
+  // eslint-disable-next-line default-case
   switch (currentRound) {
     case 1:
     case 2:

@@ -1,8 +1,7 @@
 import { useSelector } from 'react-redux';
 
 import { AppState } from '../types';
-import { SettingsState } from './types';
-import { initialState } from './reducer';
+import { initialState, SettingsState } from './reducer';
 
 export const getStateSubtree = (state: AppState): SettingsState => state.settings || initialState;
 
