@@ -24,11 +24,6 @@ const RoundOpening: React.FC = () => {
       <BaseText tag="h1" size={8} isBold>
         {t('header', { currentRound })}
       </BaseText>
-      <div className={styles.roundInfo}>
-        <BaseText tag="h1" size={6}>
-          {t(`rules-${currentRound}`)}
-        </BaseText>
-      </div>
       <BaseButton
         onClick={onRoundStart}
         type="button"

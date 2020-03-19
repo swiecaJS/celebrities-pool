@@ -2,6 +2,22 @@
 
 .wrapper {
   @extend .globalWrapper;
+  position: relative;
+
+  &::after {
+    content: "";
+    background-image: url("bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+  }
 }
 
 .result {
