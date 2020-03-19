@@ -37,7 +37,8 @@
     "rules-3": "Charades time! But team has only one guess"
   },
   "game": {
-    "getReady": "TEAM {{currentTeam}} GET READY"
+    "getReady": "TEAM {{currentTeam}} GET READY",
+    "startTurn": "Start Turn ⏲"
   },
   "manual": {
     "intro": {
