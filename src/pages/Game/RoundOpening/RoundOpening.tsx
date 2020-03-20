@@ -9,6 +9,10 @@ import { startRound } from 'store/game/actions';
 import BaseText from 'components/BaseText/BaseText';
 import BaseButton from 'components/BaseButton/BaseButton';
 
+import PigeonFeeder from './PigeonFeeder/PigeonFeeder';
+import { pigeonContext } from './PigeonFeeder/PigeonContext';
+import { usePigeon } from './PigeonFeeder/usePigeon';
+
 import styles from './RoundOpening.module.scss';
 
 const RoundOpening: React.FC = () => {
@@ -19,19 +23,30 @@ const RoundOpening: React.FC = () => {
   }, [dispatch]);
   const currentRound = useSelector(getRound);
 
+  const pigeon = usePigeon();
+
   return (
-    <div data-cy="round-opening" className={styles.wrapper}>
-      <BaseText tag="h1" size={8} isBold>
-        {t('header', { currentRound })}
-      </BaseText>
-      <BaseButton
-        onClick={onRoundStart}
-        type="button"
-        cypressSelector="start-round-btn"
-      >
-        {t('cta')}
-      </BaseButton>
-    </div>
+    <pigeonContext.Provider value={pigeon}>
+
+      <div data-cy="round-opening" className={styles.wrapper}>
+        <BaseText tag="h1" size={8} isBold>
+          {t('header', { currentRound })}
+        </BaseText>
+        {pigeon.isPigeonFed ? (
+          <BaseButton
+            onClick={onRoundStart}
+            type="button"
+            cypressSelector="start-round-btn"
+          >
+            {t('cta')}
+          </BaseButton>
+        ) : (
+          <BaseText tag="h1" size={8} isBold>Feed pigeon to continue</BaseText>
+        )}
+
+        <PigeonFeeder />
+      </div>
+    </pigeonContext.Provider>
   );
 };
 
