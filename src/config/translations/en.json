@@ -1,4 +1,7 @@
 {
+  "menu": {
+    "goHomePrompt": "Are you sure, you want to go back to homepage? It will reset the current game progress 🙈"
+  },
   "start": {
     "title": "Celebrity Pool",
     "cta": "Start"
