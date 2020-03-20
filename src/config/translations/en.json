@@ -1,4 +1,7 @@
 {
+  "menu": {
+    "goHomePrompt": "Are you sure, you want to go back to homepage? It will reset the current game progress 🙈"
+  },
   "start": {
     "title": "Celebrity Pool",
     "cta": "Start"
@@ -11,15 +14,16 @@
     "secondsForCharades": "How many seconds per charades round?",
     "cta": "Start Game!"
   },
-  "characters": {
+  "addingCharacters": {
+    "counter": "Characters entered: {{current}} / {{total}}",
+    "enterCharacter": "Who you have in mind? 🤔",
     "header": "Adding Characters Time!",
-    "submit": "Add Character",
+    "isReady": "Are you ready?",
+    "placeholder": "e.g Batman, Jim Carey or Leo Messi ⚽️",
     "playerInfo": "Player {{currentPlayerId}} turn",
     "start": "Start Game",
-    "enterCharacter": "Who you have in mind? 🤔",
-    "isReady": "Are you ready?",
-    "yes": "Yeah!",
-    "counter": "Characters entered: {{current}} / {{total}}"
+    "submit": "Add Character",
+    "yes": "Yeah!"
   },
   "results": {
     "header": "Game Over",
@@ -38,7 +42,7 @@
   },
   "game": {
     "getReady": "TEAM {{currentTeam}} GET READY",
-    "startTurn": "Start Turn ⏲"
+    "startTurn": "Start Turn 🤞"
   },
   "manual": {
     "intro": {

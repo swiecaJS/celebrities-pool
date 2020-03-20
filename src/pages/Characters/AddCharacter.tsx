@@ -21,7 +21,7 @@ const AddCharacter: React.FC = () => {
     reset: resetCharacterName,
   } = useInput('');
 
-  const { t } = useTranslation('characters');
+  const { t } = useTranslation('addingCharacters');
   const dispatch = useDispatch();
   const onAddCharacter = useCallback(
     (character: Character) => dispatch(addCharacter(character)),
@@ -55,6 +55,7 @@ const AddCharacter: React.FC = () => {
           type="text"
           name="character"
           id="character"
+          placeholder={t('placeholder')}
           {...bindCharacterName}
         />
       </label>

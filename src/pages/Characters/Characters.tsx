@@ -13,7 +13,7 @@ import styles from './Characters.module.scss';
 
 const CharacterPage: React.FC = () => {
   const [isAddingFinished, setAddingFinished] = useState(false);
-  const { t } = useTranslation('characters');
+  const { t } = useTranslation('addingCharacters');
 
   const totalNumberOfCharacters = useSelector(getTotalNumberOfCharacters);
   const characters = useSelector(getCharacters);
@@ -34,6 +34,8 @@ const CharacterPage: React.FC = () => {
             current: characters.length,
           })}
         </BaseText>
+
+        {/* used only for e2e tests */}
         <input type="hidden" data-cy="total-characters-in-game" value={totalNumberOfCharacters} />
         <input type="hidden" data-cy="characters-entered" value={characters.length} />
 
@@ -42,9 +44,7 @@ const CharacterPage: React.FC = () => {
         {isAddingFinished ? (
           <Finished />
         ) : (
-          <>
-            <AddCharacter />
-          </>
+          <AddCharacter />
         )}
       </div>
     </section>
