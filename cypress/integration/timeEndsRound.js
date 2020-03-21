@@ -111,14 +111,12 @@ describe('Time for turn ends', () => {
 
   it('when time for turn ends, next turn button is visible', () => {
     const correctBtn = 'button[data-cy="correct"]';
-    const notCorrectBtn = 'button[data-cy="notCorrect"]';
 
     cy.url().should('eq', `${Cypress.config().baseUrl}/game`);
     cy.get('[data-cy="round-opening"]').should('not.be.visible');
     cy.get('[data-cy="game-standings"]').should('be.visible');
     cy.get('[data-cy="start-turn-btn"]').click();
 
-    cy.get(notCorrectBtn).should('be.visible');
     cy.get(correctBtn).should('be.visible');
     cy.wait(MIN_TIME_PER_ROUND_IN_SECONDS * 1000);
     cy.get('[data-cy="start-turn-btn"]').should('be.visible');

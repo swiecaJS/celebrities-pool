@@ -15,6 +15,8 @@ export const getCurrentCharacterToGuess = (state: AppState) => getGameState(stat
 export const getHasGameEnded = (state: AppState) => getGameState(state).hasGameEnded;
 export const getIsPlayerReady = (state: AppState) => getGameState(state).isReady;
 export const getTeamPoints = (state: AppState) => getGameState(state).points;
+export const getIsFirstRound = (state: AppState) => getGameState(state).round === 1;
+
 export const getHowManyLeftToGuess = createSelector(
   getGameState,
   ({ charactersLeftToGuess, currentCharacter }) => charactersLeftToGuess.length + (currentCharacter ? 1 : 0),

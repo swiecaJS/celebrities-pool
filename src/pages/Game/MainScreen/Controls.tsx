@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { playerGuessed, startTurn } from 'store/game/actions';
 import { PlayerGuess } from 'store/game/types';
-import { getIsPlayerReady, getCurrentCharacterToGuess } from 'store/game/selectors';
+import { getIsPlayerReady, getCurrentCharacterToGuess, getIsFirstRound } from 'store/game/selectors';
 
 
 import BaseButton from 'components/BaseButton/BaseButton';
@@ -20,7 +20,7 @@ const Controls: React.FC = () => {
   const isPlayerReady = useSelector(getIsPlayerReady);
   const onGuess = useCallback((guess: PlayerGuess) => dispatch(playerGuessed(guess)), [dispatch]);
   const onStartTurn = useCallback(() => dispatch(startTurn()), [dispatch]);
-
+  const isFirstRound = useSelector(getIsFirstRound);
 
   return (
     <div className={styles.controls}>
@@ -30,12 +30,12 @@ const Controls: React.FC = () => {
         </BaseButton>
       ) : (
         <>
-          <ControlButton
+          {!isFirstRound && (<ControlButton
             type="notCorrect"
             onClick={() => {
               onGuess({ isCorrect: false, character });
             }}
-          />
+          />)}
           <ControlButton
             type="correct"
             onClick={() => {

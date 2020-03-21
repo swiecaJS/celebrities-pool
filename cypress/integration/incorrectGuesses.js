@@ -1,19 +1,17 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /// <reference types="Cypress" />
-import faker from 'faker';
 
-const SLIDER_STEP = 1;
-const MIN_NUMBER_OF_CHARACTERS_PER_PLAYER = 1;
+const NUMBER_OF_CHARACTERS = 5;
+const correctBtn = 'button[data-cy="correct"]';
+const notCorrectBtn = 'button[data-cy="notCorrect"]';
 
-describe('Incorrect Guesses in every first turn', () => {
-  let charactersPerPerson;
-  let numberOfPlayers;
 
+describe('Incorrect Guesses after first turn', () => {
   beforeEach(() => {
     cy.viewport('iphone-6');
   });
 
-  it('shows start screem', () => {
+  it('shows start screen', () => {
     cy.visit(Cypress.config().baseUrl);
     cy.get('[data-cy="start-game-btn"]').click();
     cy.url().should('eq', `${Cypress.config().baseUrl}/rules`);
@@ -25,63 +23,11 @@ describe('Incorrect Guesses in every first turn', () => {
   });
 
   it('allows to change settings', () => {
-    let sliderValue;
-    cy.get('[data-cy="number-of-players-slider"]')
-      .then(($div) => {
-        sliderValue = Number($div.text());
-      })
-      .trigger('mousedown')
-      .trigger('mousemove', 'right')
-      .trigger('mouseup')
-      .should(($div) => {
-        numberOfPlayers = Number($div.text());
-        expect(numberOfPlayers).to.eq(sliderValue + SLIDER_STEP);
-      });
-
-    cy.get('[data-cy="character-per-person-slider"]')
-      .then(($div) => {
-        sliderValue = Number($div.text());
-      })
-      .trigger('mousedown')
-      .trigger('mousemove', 'left')
-      .trigger('mousemove', 'left')
-      .trigger('mousemove', 'left')
-      .trigger('mousemove', 'left')
-      .trigger('mousemove', 'left')
-      .trigger('mouseup')
-      .should(($div) => {
-        charactersPerPerson = Number($div.text());
-        expect(charactersPerPerson).to.eq(MIN_NUMBER_OF_CHARACTERS_PER_PLAYER);
-      });
-
-    cy.get('[data-cy="settings-finished-btn"').click();
+    cy.fillUpSettings({});
   });
 
   it('asks users to enter characters', () => {
-    const totalCharactersNumber = charactersPerPerson * numberOfPlayers;
-    cy.url().should('eq', `${Cypress.config().baseUrl}/characters`);
-
-    cy.get('[data-cy="total-characters-in-game"]')
-      .invoke('val')
-      .then(value => expect(Number(value)).to.eq(totalCharactersNumber));
-
-    let enteredCharacters = 0;
-
-    cy.wrap(new Array(totalCharactersNumber)).each(() => {
-      cy.get('[data-cy="characters-entered"]')
-        .invoke('val')
-        .then(value => expect(Number(value)).to.eq(enteredCharacters));
-
-      cy.get('[data-cy="player-ready-btn"]').click();
-      cy.get('[data-cy="enter-character"]').type(faker.name.findName());
-      cy.get('[data-cy="submit-character-btn"]')
-        .click()
-        .then(() => {
-          enteredCharacters += 1;
-        });
-    });
-
-    cy.get('[data-cy="characters-entering-finished"]').click();
+    cy.fillUpCharacters({ numberOfCharacters: NUMBER_OF_CHARACTERS });
   });
 
   it('display info about first round', () => {
@@ -91,24 +37,13 @@ describe('Incorrect Guesses in every first turn', () => {
     cy.get('[data-cy="start-round-btn"]').click();
   });
 
-  it('allow Team B to guess all characters in first round', () => {
-    const totalCharactersNumber = charactersPerPerson * numberOfPlayers;
-    const correctBtn = 'button[data-cy="correct"]';
-    const notCorrectBtn = 'button[data-cy="notCorrect"]';
-
+  it('allow Team A to guess all characters in first round', () => {
     cy.url().should('eq', `${Cypress.config().baseUrl}/game`);
     cy.get('[data-cy="round-opening"]').should('not.be.visible');
     cy.get('[data-cy="game-standings"]').should('be.visible');
     cy.get('[data-cy="start-turn-btn"]').click();
 
-    cy.wrap(new Array(totalCharactersNumber)).each(() => {
-      cy.get(notCorrectBtn).click();
-    });
-
-    // TEAM B turn
-    cy.get('[data-cy="start-turn-btn"]').click();
-
-    cy.wrap(new Array(totalCharactersNumber)).each(() => {
+    cy.wrap(new Array(NUMBER_OF_CHARACTERS)).each(() => {
       cy.get(correctBtn).click();
     });
   });
@@ -120,25 +55,21 @@ describe('Incorrect Guesses in every first turn', () => {
     cy.get('[data-cy="start-round-btn"]').click();
   });
 
-  it('allow team B to guess all characters in second round', () => {
-    const totalCharactersNumber = charactersPerPerson * numberOfPlayers;
-    const correctBtn = 'button[data-cy="correct"]';
-    const notCorrectBtn = 'button[data-cy="notCorrect"]';
-
+  it('allow team B to guess incorrectly all characters in second round (team A wins round)', () => {
     cy.url().should('eq', `${Cypress.config().baseUrl}/game`);
     cy.get('[data-cy="round-opening"]').should('not.be.visible');
     cy.get('[data-cy="game-standings"]').should('be.visible');
     cy.get('[data-cy="start-turn-btn"]').click();
 
-    // TEAM A - turn
-    cy.wrap(new Array(totalCharactersNumber)).each(() => {
+    // TEAM B - turn
+    cy.wrap(new Array(NUMBER_OF_CHARACTERS)).each(() => {
       cy.get(notCorrectBtn).click();
     });
 
-    // TEAM B turn
+    // TEAM A turn
     cy.get('[data-cy="start-turn-btn"]').click();
 
-    cy.wrap(new Array(totalCharactersNumber)).each(() => {
+    cy.wrap(new Array(NUMBER_OF_CHARACTERS)).each(() => {
       cy.get(correctBtn).click();
     });
   });
@@ -150,25 +81,21 @@ describe('Incorrect Guesses in every first turn', () => {
     cy.get('[data-cy="start-round-btn"]').click();
   });
 
-  it('allow team B to guess all characters in thirf round', () => {
-    const totalCharactersNumber = charactersPerPerson * numberOfPlayers;
-    const correctBtn = 'button[data-cy="correct"]';
-    const notCorrectBtn = 'button[data-cy="notCorrect"]';
-
+  it('allow team B to guess all characters incorrectly in third round (team A wins)', () => {
     cy.url().should('eq', `${Cypress.config().baseUrl}/game`);
     cy.get('[data-cy="round-opening"]').should('not.be.visible');
     cy.get('[data-cy="game-standings"]').should('be.visible');
     cy.get('[data-cy="start-turn-btn"]').click();
 
-    // TEAM A - turn
-    cy.wrap(new Array(totalCharactersNumber)).each(() => {
+    // TEAM B - turn
+    cy.wrap(new Array(NUMBER_OF_CHARACTERS)).each(() => {
       cy.get(notCorrectBtn).click();
     });
 
-    // TEAM B turn
+    // TEAM A turn
     cy.get('[data-cy="start-turn-btn"]').click();
 
-    cy.wrap(new Array(totalCharactersNumber)).each(() => {
+    cy.wrap(new Array(NUMBER_OF_CHARACTERS)).each(() => {
       cy.get(correctBtn).click();
     });
   });
@@ -181,6 +108,6 @@ describe('Incorrect Guesses in every first turn', () => {
     cy.get('[data-cy="reset-game-btn"]').should('be.visible');
     cy.get('[data-cy="game-winner"]')
       .invoke('val')
-      .then(value => expect(value).to.eq('B'));
+      .then(value => expect(value).to.eq('A'));
   });
 });
