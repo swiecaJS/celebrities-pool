@@ -9,78 +9,80 @@
   "settings": {
     "header": "Game settings",
     "charactersPerPerson": "Characters added by one player:",
-    "numberOfPlayers": "Number of players",
-    "secondsForRound": "How many seconds per round?",
-    "secondsForCharades": "How many seconds per charades round?",
+    "numberOfPlayers": "Number of players:",
+    "secondsForRound": "Seconds per round:",
     "cta": "Start Game!"
   },
   "addingCharacters": {
-    "counter": "Characters entered: {{current}} / {{total}}",
-    "enterCharacter": "Who you have in mind? 🤔",
-    "header": "Adding Characters Time!",
-    "isReady": "Are you ready?",
-    "placeholder": "e.g Batman, Jim Carey or Leo Messi ⚽️",
-    "playerInfo": "Player {{currentPlayerId}} turn",
+    "counter": "Character: {{current}} / {{total}}",
+    "enterCharacter": "Who do you have in mind? 🤔",
+    "header": "Add Characters",
+    "isReady": "",
+    "placeholder": "e.g. Batman, Jim Carey, Leo Messi...",
+    "playerInfo": "Player {{currentPlayerId}}, are you ready?",
     "start": "Start Game",
     "submit": "Add Character",
     "yes": "Yeah!"
   },
-  "results": {
     "header": "Game Over",
     "result": "Team {{winner}} won! 👏",
     "details": "Final standings:",
     "points": "Team {{team}} : {{points}} points",
     "draw": "We have a tie! 🙈",
-    "playAgain": "Play Again!"
+    "playAgain": "Play Again"
   },
   "roundOpening": {
     "header": " Round {{currentRound}} is about to begin",
     "cta": "Continue",
-    "rules-1": "In this round Player giving clues can say everything. Team has as many guess as they need",
-    "rules-2": "In this round Player giving clues can say ONE WORD. The team has ONE GUESS",
-    "rules-3": "Charades time! But team has only one guess"
+    "rules-1": "Use only WORDS to describe the character. Your team has as many guesses as they need.",
+    "rules-2": "Use only ONE WORD to describe the character. The team has ONE GUESS.",
+    "rules-3": "Use only GESTURES to describe the character 🙊 The team has ONE GUESS."
   },
   "game": {
-    "getReady": "TEAM {{currentTeam}} GET READY",
-    "startTurn": "Start Turn 🤞"
+    "getReady": "TEAM {{currentTeam}} GET READY!",
+    "startTurn": "Start turn 🤞"
   },
   "manual": {
     "intro": {
-      "header": "At the begging",
+      "header": "How to start",
       "content": [
-        "Split into two teams",
-        "The goal of the game if to guess as much characters in 3 rounds",
-        "In every turn there will be one 'Cluegiver' who will have limited time to help his team guess as many characters as possible",
-        "The characters to guess will be invented by you as a first step of game!" 
+        "Split into two teams.",
+        "Create your 'celebrity pool': add characters (real or fictional).",
+        "You will describe and guess these characters in 3 different rounds.",
+        "The team who guesses more characters wins."
       ],
       "linkLabel": "Next"
     },
     "round-1": {
       "header": "Round 1",
       "content": [
-        "In this round 'Cluegiver' can say everything. There are no limits.",
-        "Try to remember guessed characters because they will be reused in the whole game",
-        "If the time ends, team changes",
-        "You will be guessing until all of entered characters all guessed"
+        "Use only WORDS to describe the character.",
+        "Example: Britney Spears",
+        "Clue: Female pop star. Sings 'Toxic'.",
+        "Use as many words as you want until your team guesses (or the time ends ⏰).",
+        "Try to remember all characters because the 'celebrity pool' stays the same for the entire game."
       ],
       "linkLabel": "Next"
     },
     "round-2": {
       "header": "Round 2",
       "content": [
-        "Now 'Cluegiver' can use only 1 WORD to describe character. After word is said he/she should be silent, and also does not help team in any other way",
-        "What is more, the team has only ONE GUESS. If the guess is wrong, this character goes back to memory, you have to press red button. ",
-        "The team can still guess next one until the time ends"
+        "Use only ONE WORD to describe the character.",
+        "Example: Britney Spears",
+        "Clue: Toxic.",
+        "The team has only ONE guess. Click 👍 if they guess, 👎 if they don't."
       ],
       "linkLabel": "Next"
     },
     "round-3": {
       "header": "Round 3",
       "content": [
-        "Charades time! 'Cluegiver' cannot make any sound, but he can use his body moves to help you!" ,
-        "Again team has ONE GUESS per character"
+        "Use only GESTURES to describe the character. AKA charades time! ",
+        "Example: Britney Spears",
+        "Clue: ⭐️🎤💃",
+        "The team has only ONE GUESS. Click 👍 if they guess, 👎 if they don't."
       ],
-      "linkLabel": "Begin setup"
+      "linkLabel": "Start setup"
     }
   }
 }
