@@ -13,11 +13,13 @@ const PigeonFeeder = () => {
 
   return (
     <div className={styles.wrapper}>
-      <DragDropContainer targetKey="foo">
-        <img src={bread} alt="bread" className={styles.bread} />
-      </DragDropContainer>
+      {!isPigeonFed && (
+        <DragDropContainer targetKey="pigeon">
+          <img src={bread} alt="bread" className={styles.bread} />
+        </DragDropContainer>
+      )}
 
-      <DropTarget targetKey="foo" onHit={() => feedPigeon()}>
+      <DropTarget targetKey="pigeon" onHit={() => feedPigeon()}>
         <div className={styles.target} />
       </DropTarget>
     </div>

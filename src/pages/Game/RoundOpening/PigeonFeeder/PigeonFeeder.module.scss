@@ -8,17 +8,40 @@
 
 .target {
   // background: green;
-  height: 350px;
-  width: 200px;
+  height: 60%;
+  width: 50%;
   position: absolute;
   right: 0;
-  bottom: 50px;
+  bottom: 0px;
 }
 
 .wrapper {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
+}
+
+.heart {
+  position: absolute;
+  fill: red;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  animation: pulse 1s ease;
+  opacity: 0;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  99%{
+    transform: scale(5);
+  }
+  100% {
+    opacity: 0;
+  }
 }
