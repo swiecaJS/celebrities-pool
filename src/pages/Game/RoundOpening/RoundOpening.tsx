@@ -10,6 +10,7 @@ import BaseText from 'components/BaseText/BaseText';
 import BaseButton from 'components/BaseButton/BaseButton';
 
 import PigeonFeeder from './PigeonFeeder/PigeonFeeder';
+import Heart from './PigeonFeeder/Heart';
 import { pigeonContext } from './PigeonFeeder/PigeonContext';
 import { usePigeon } from './PigeonFeeder/usePigeon';
 
@@ -45,6 +46,7 @@ const RoundOpening: React.FC = () => {
         )}
 
         <PigeonFeeder />
+        <Heart />
       </div>
     </pigeonContext.Provider>
   );

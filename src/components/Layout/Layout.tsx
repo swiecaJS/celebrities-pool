@@ -12,8 +12,8 @@ type Props = PropTypes.InferProps<typeof propTypes>;
 
 const Layout: React.FC<Props> = ({ children }) => (
   <div className={styles.wrapper}>
-    <GoHome />
     <main className={styles.game}>
+      <GoHome />
       {children}
     </main>
   </div>
