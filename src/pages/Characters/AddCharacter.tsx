@@ -50,6 +50,7 @@ const AddCharacter: React.FC = () => {
           {t('enterCharacter')}
         </BaseText>
         <input
+          autoComplete="off"
           data-cy="enter-character"
           className={styles.input}
           type="text"

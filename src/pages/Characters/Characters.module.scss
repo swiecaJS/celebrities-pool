@@ -13,5 +13,8 @@
 }
 
 .content {
+  display: flex;
   flex: 4;
+  justify-content: center;
+  flex-direction: column;
 }
