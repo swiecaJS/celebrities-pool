@@ -24,6 +24,7 @@
     "submit": "Add Character",
     "yes": "Yeah!"
   },
+  "results": {
     "header": "Game Over",
     "result": "Team {{winner}} won! 👏",
     "details": "Final standings:",
@@ -59,7 +60,8 @@
         "Use only WORDS to describe the character.",
         "Example: Britney Spears",
         "Clue: Female pop star. Sings 'Toxic'.",
-        "Use as many words as you want until your team guesses (or the time ends ⏰).",
+        "Use as many words as you want. If your team guesses, click 👍.",
+        "Every guess is +1 point for your team. Keep guessing until the time ends.",
         "Try to remember all characters because the 'celebrity pool' stays the same for the entire game."
       ],
       "linkLabel": "Next"
