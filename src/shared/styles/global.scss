@@ -32,6 +32,8 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 
+input:focus { outline: none }
+
 body {
 	line-height: 1;
 }
