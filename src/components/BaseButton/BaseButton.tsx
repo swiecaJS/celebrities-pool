@@ -8,7 +8,7 @@ import styles from './BaseButton.module.scss';
 interface Props {
   onClick?: () => void;
   type: 'submit' | 'button';
-  className?: 'string';
+  className?: string;
   cypressSelector?: string;
   isDisabled?: boolean;
   isSecondary?: boolean;
@@ -21,6 +21,7 @@ const BaseButton: React.FC<Props> = ({
   cypressSelector,
   isDisabled,
   isSecondary,
+  className,
 }) => (
   <button
     onClick={onClick}
@@ -28,7 +29,7 @@ const BaseButton: React.FC<Props> = ({
     className={cn(styles.primary, {
       [styles.disabled]: isDisabled,
       [styles.secondary]: isSecondary,
-    })}
+    }, className)}
     data-cy={cypressSelector}
     disabled={isDisabled}
   >
