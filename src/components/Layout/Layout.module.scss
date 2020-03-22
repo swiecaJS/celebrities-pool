@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=PT+Sans|PT+Sans+Narrow:700&display=swap");
 @import "shared/styles/index.scss";
 
+// prevent double tap zoom on iOS
+* {
+  touch-action: manipulation;
+}
+
 .wrapper {
   height: 100%;
   display: flex;
