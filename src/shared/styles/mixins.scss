@@ -4,4 +4,8 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 60px 0;
+
+  @media only screen and (max-device-width: 380px) {
+    padding: 20px 0;
+  }
 }
