@@ -19,6 +19,7 @@ const Start: React.FC = () => {
       <BaseLink to={routes.rules} type="primary" cypressSelector="start-game-btn">
         {t('cta')}
       </BaseLink>
+      <BaseText tag="p" size={3} className={styles.footer}>made by <a href="https://github.com/swiecaJS">swiecaJS</a></BaseText>
     </section>
   );
 };
