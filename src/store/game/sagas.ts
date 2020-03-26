@@ -7,6 +7,8 @@ import { SettingsState } from 'store/settings/reducer';
 import { getCharacters } from 'store/characters/selectors';
 import { Character } from 'store/characters/types';
 
+import removeDuplications from 'utils/removeDuplications';
+
 import * as gameActions from './actions';
 import {
   getTimeLeft,
@@ -25,11 +27,12 @@ export function* prepareRound() {
 
   const characters: Character[] = yield saga.select(getCharacters);
   const mappedCharacters = characters
-    .map(({ description }) => description)
-    .filter((value, index, self) => self.indexOf(value) === index);
+    .map(({ description }) => description);
+
+  const charactersWithoutDuplicates = removeDuplications(mappedCharacters);
 
   yield saga.put(
-    gameActions.setCharactersLeftToGuess(shuffleArray(mappedCharacters)),
+    gameActions.setCharactersLeftToGuess(shuffleArray(charactersWithoutDuplicates)),
   );
 
   yield saga.put(gameActions.setIsRoundOpening(false));
