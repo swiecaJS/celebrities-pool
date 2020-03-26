@@ -6,7 +6,7 @@ export function normalize(str: string) {
     .toLowerCase();
 }
 export default (input: string[]) => {
-  const MapOfCharacters = input.reduce((accumulator, current) => {
+  const MapOfCharacters = input.reduce<Record<string, string>>((accumulator, current) => {
     const normalizedCharacter = normalize(current);
     if (accumulator.hasOwnProperty(normalizedCharacter)) return accumulator;
     accumulator[normalize(current)] = current;
